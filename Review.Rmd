@@ -1,0 +1,144 @@
+---
+---
+title: "RAP survey" \
+date: "`r format(Sys.time(), '%d %B, %Y')`" \
+author: "Joselynn Wallace" \
+output: pdf_document \
+---
+
+Recall from **Definition 1.2.6** in `https://teambasedinquirylearning.github.io/linear-algebra/2022/LE2.html` that for a matrix to be in **reduced row echelon form** it should follow these rules:
+
+**1.** The leading term (first non-zero) must be a 1. This is called a **pivot**.\
+**2.** Each **pivot should be to the right of every higher pivot** -- so they should be oriented such that they generally start in the upper left section of the matrix and end in the lower right.\
+**3.** All terms in the same **column** of a pivot should be **zeroes**.\
+**4.** All **rows of zeroes** should be at the **bottom** of the matrix.\
+
+Recall from **Definition 1.2.3** in `https://teambasedinquirylearning.github.io/linear-algebra/2022/LE2.html` that the following row operations are OK and will produce equivalent matrices:
+
+**1.** Swapping two rows\
+**2.** Multiplying a row by a non-zero constant\
+**3.** Adding a constant multiple of one row to another row\
+
+**Starting Matrix:** \
+
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+2 & 4 & 5 \\
+-3 & -6 & -4 \\
+2 & 4 & 0 \\
+2 & 4 & 1 \\
+\end{bmatrix}
+$$
+**My general strategy is to:** \
+  **1.** Try to zero out the rows I can zero out. \
+  **2.** Try to get at least 1 row to be two 0s and one 1. \
+  **3.** Use the row of 0s and 1s to adjust other rows as needed. \
+  
+
+**Step 1. Change row 2 (R2 + -1R4).**\
+Subtract row 4 from row 2. This gets us a little closer to a [0,0,1] in row 2. This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+0 & 0 & 5\\
+-3 & -6 & -4 \\
+2 & 4 & 0 \\
+2 & 4 & 1 \\
+\end{bmatrix}
+$$
+
+
+
+**Step 2. Change row 5 (R5 + -2R1).**\ Subtract 2 x row 1 from row 5. Again, this is getting us closer to [0,0,1] in row 5. This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+0 & 0 & 5\\
+-3 & -6 & -4 \\
+2 & 4 & 0 \\
+0 & 0 & -3 \\
+\end{bmatrix}
+$$
+
+
+**Step 3. Change row 4. (R4 + -2R1).**\ Subtract 2 x row 1 from row 4 . Again, this is getting us closer to [0,0,1] in row 4. This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+0 & 0 & 5\\
+-3 & -6 & -4 \\
+0 & 0 & -4 \\
+0 & 0 & -3 \\
+\end{bmatrix}
+$$
+
+**Step 4. Change row 5 (R5 + -1R4).**\ Subtract row 4 from row 5. Great, now row 5 is [0,0,1]. This makes it easier to add multiples of row 5 to other rows to change only the number in column 3. This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+0 & 0 & 5\\
+-3 & -6 & -4 \\
+0 & 0 & -4 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+
+**Step 5. Change row 2 (R2 + -5R5).**\ Add -5 * row 5 to row 2 , zeroing it out. This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+0 & 0 & 0 \\
+-3 & -6 & -4 \\
+0 & 0 & -4 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+**Step 6. Change row 4 (R4 + 4R5).**\ Add 4 * row 5 to row 4, zeroing it out. This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+0 & 0 & 0 \\
+-3 & -6 & -4 \\
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+**Step 7. Change row 3 (R3 + 3R1).**\ Add 3 * row 1 to row 3. This gets us closer to zeroing out row 3. This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 2 \\ 
+0 & 0 & 0\\
+0 & 0 & 2 \\
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+
+**Step 8. Change row 3 (R3 + -2R5).**\ Add -2 * row 5 to row 3, zeroing it out . This is permissible because of 1.2.3 rule 3.
+$$
+\begin{bmatrix} 
+1  & 2 & 0 \\ 
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+
+
+**Step 9. Change rows 2 and 5, swapping them (R2 <-> R5).**\ Swap row 2 and 5 so that all the zero rows are to the bottom and the pivots are moving generally down and to the right. This is permissible because of 1.2.3 rule 1.
+$$
+\begin{bmatrix} 
+1  & 2 & 0 \\ 
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+\end{bmatrix}
+$$

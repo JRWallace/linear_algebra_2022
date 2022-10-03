@@ -1,0 +1,132 @@
+---
+---
+date: "`r format(Sys.time(), '%d %B, %Y')`" \
+author: "Joselynn Wallace" \
+output: pdf_document 
+---
+
+Recall from **Definition 1.2.6** in `https://teambasedinquirylearning.github.io/linear-algebra/2022/LE2.html` that for a matrix to be in **reduced row echelon form** it should follow these rules:
+
+**1.** The leading term (first non-zero) must be a 1. This is called a **pivot**.\
+**2.** Each **pivot should be to the right of every higher pivot** -- so they should be oriented such that they generally start in the upper left section of the matrix and end in the lower right.\
+**3.** All terms in the same **column** of a pivot should be **zeroes**.\
+**4.** All **rows of zeroes** should be at the **bottom** of the matrix.\
+
+Recall from **Definition 1.2.3** in `https://teambasedinquirylearning.github.io/linear-algebra/2022/LE2.html` that the following row operations are OK and will produce equivalent matrices:
+
+**1.** Swapping two rows\
+**2.** Multiplying a row by a non-zero constant\
+**3.** Adding a constant multiple of one row to another row\
+
+**Starting Matrix:** \
+
+$$
+\begin{bmatrix} 
+3  & -1 & 3 & 1 \\ 
+-4 & 2 & 1 & -1 \\
+10 & 4 & 5 & 1 \\
+\end{bmatrix}
+$$
+**My general strategy is to:** \
+  **1.** Try to zero out the rows I can zero out. \
+  **2.** Try to get at least 1 row to be two 0s and one 1. \
+  **3.** Use the row of 0s and 1s to adjust other rows as needed. \
+```{r}
+i = 1
+
+```
+
+**Step `r i`. Replace row 2 with the sum of row 1 and row 2. R2 =  R1 + R2**\
+$$
+\begin{bmatrix} 
+3  & -1 & 3 & 1 \\ 
+-1 & 1 & 4 & 0 \\
+10 & 4 & 5 & 1 \\
+\end{bmatrix}
+$$
+**Step 2. Replace row one with 3R1. R1 = 3R1**\
+$$
+\begin{bmatrix} 
+9  & -3 & 9 & 3 \\ 
+-1 & 1 & 4 & 0 \\
+10 & 4 & 5 & 1 \\
+\end{bmatrix}
+$$
+
+
+
+
+**Step 3. Replace row 1 with the difference between row 3 and row 1. R1 = R1 - R3**\
+$$
+\begin{bmatrix} 
+-1  & 1 & 3 & 2 \\ 
+-1 & 1 & 4 & 0 \\
+10 & 4 & 5 & 1 \\
+\end{bmatrix}
+$$
+**Step 4. Replace row 1 with the difference between row 1 and row 2. R1 = R1 - R2**\
+$$
+\begin{bmatrix} 
+0  & 0 & -1 & 2 \\ 
+-1 & 1 & 4 & 0 \\
+10 & 4 & 5 & 1 \\
+\end{bmatrix}
+$$
+
+**Step 5. Replace row 3 with the difference between row 3 and row 2. R3 = R3 - R2**\
+$$
+\begin{bmatrix} 
+0  & 0 & -1 & 2 \\ 
+-1 & 1 & 4 & 0 \\
+9 & 3 & 1 & 1 \\
+\end{bmatrix}
+$$
+
+
+**Step 5. Replace row 3 with the sum of row 3 and 9 times row 2. R3 = R3 + 9R2**\
+$$
+\begin{bmatrix} 
+0  & 0 & -1 & 2 \\ 
+-1 & 1 & 4 & 0 \\
+0 & 12 & 37 & 1 \\
+\end{bmatrix}
+$$
+**Step 6. Replace row 3 with the difference between row 3 and 12 times row 2. R3 = R3 - 12R2**\
+$$
+\begin{bmatrix} 
+0  & 0 & -1 & 2 \\ 
+-1 & 1 & 4 & 0 \\
+-12 & 0 & -11 & 0 \\
+\end{bmatrix}
+$$
+**Step 7. Replace row 3 with the difference between row 3 and 12 times row 2. R3 = R3 - 12R2**\
+$$
+\begin{bmatrix} 
+0  & 0 & -1 & 2 \\ 
+-1 & 1 & 4 & 0 \\
+-12 & 0 & -11 & 0 \\
+\end{bmatrix}
+$$
+Just randomly trying things now because I'm stuck...
+
+**Step 8. Replace row 2 with the difference between row 1 plus row 2. R2 = R1 + R2**\
+$$
+\begin{bmatrix} 
+0  & 0 & -1 & 2 \\ 
+-1 & 1 & 3 & 2 \\
+-12 & 0 & -11 & 0 \\
+\end{bmatrix}
+$$
+
+**Step 9. Replace row 2 with the difference between row 1 plus row 2. R2 = R1 + R2**\
+$$
+\begin{bmatrix} 
+0  & 0 & -1 & 2 \\ 
+-1 & 1 & 3 & 2 \\
+-12 & 0 & -11 & 0 \\
+\end{bmatrix}
+$$
+
+
+
+
