@@ -1,0 +1,213 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\section*{Oct 14 notes}
+\textbf{Activity 2.6.2:}\\
+$\vec{e}_{1} = \hat{i} = \begin{bmatrix} 
+1\\ 
+0\\
+0\\
+\end{bmatrix}$, $\vec{e}_{2} = \hat{j} =\begin{bmatrix} 
+0\\ 
+1\\
+0\\
+\end{bmatrix}$, $\vec{e}_{3} = \hat{k} =\begin{bmatrix} 
+0\\ 
+0\\
+1\\
+\end{bmatrix}$\\
+\\
+a) $\vec{v}$ can be expressed as a linear combination of $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{e}_{3}$ because we have a pivot in every row, we can set i, j, and k to be any scalar to get any values of $\vec{v}$ \\
+\\
+b) If $\vec{w} = \begin{bmatrix} 
+1\\ 
+1\\
+0\\
+\end{bmatrix}$, $\vec{v}$ can't be expressed as a linear combination of $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{w}$ because we don't have a pivot in row 3, so not spanning set. \\
+\\
+c) All vectors in $\mathbb{R}^{3}$ can be written as linear combinations of $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{e}_{3}$  because we have a pivot in every row and column - linearly independent vectors that span the set\\
+\\
+\textbf{Observation 2.6.3:} A basis is a linearly independent set that spans a vector space. In example 2.6.2, $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{e}_{3}$ is an example of the standard basis vectors of $\mathbb{R}^{3}$.\\
+\\
+\textbf{Observation 2.6.4} A basis may be thought of as a collection of building blocks for a vector space, since every vector in the space can be expressed as a unique linear combination of basis vectors.\\
+\\
+\textbf{Observation 2.5.8 says:}\\
+- A set of vectors is \textbf{linearly independent} if and only if the RREF has all pivot columns.\\
+- A set of $\mathbb{R}^{m}$ vectors \textbf{spans $\mathbb{R}^{m}$} if the RREF has all pivot rows\\
+\\
+\textbf{Definition 2.6.3 says:}\\
+- A basis is a linearly independent set that spans a vector space. \\
+(This means it should have pivots in every row and column.)\\
+\\
+\textbf{Activity 2.6.5}\\
+Label each of the sets as: spanning $\mathbb{R}^{4}$, linearly independent, or a basis for $\mathbb{R}^{4}$
+\\
+$
+A = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+$, $
+B = \begin{bmatrix} 
+2 & 2 & 4 & -3 \\ 
+3 & 0 & 3 & 0 \\
+0 & 0 & 0 & 1 \\
+-1 & 3 & 2 & 3 \\
+\end{bmatrix}
+$, $
+C = \begin{bmatrix} 
+2 & 2 & 3 & -1 & 4 \\ 
+3 & 0 & 13 & 10 & 3 \\ 
+0 & 0 & 7 & 7 & 0 \\ 
+-1 & 3 & 16 & 14 & 2 \\ 
+\end{bmatrix}
+$\\$D = \begin{bmatrix} 
+2 & 4 & -3 & 3 \\ 
+3 & 3 & 0 & 6 \\
+0 & 0 & 1 & 1 \\
+-1 & 2 & 3 & 5 \\
+\end{bmatrix}
+$, $E = \begin{bmatrix} 
+5 & -2 & 4\\ 
+3 & 1 & 5\\
+0 & 0 & 1\\
+-1 & 3 & 3\\
+\end{bmatrix}
+$\\
+\\
+
+\begin{verbatim}
+B=Matrix(QQ,[ [2,2,4,-3],[3,0,3,0],[0,0,0,1], [-1,3,2,3] ])
+B.rref()
+C=Matrix(QQ,[ [2,2,3,-1,4],[3,0,13,10,3],[0,0,7,7,0], [-1,3,16,14,2] ])
+C.rref()
+D=Matrix(QQ,[ [2,4,-3,3],[3,3,0,6],[0,0,1,1], [-1,2,3,5] ])
+D.rref()
+E=Matrix(QQ,[ [5,-2,4],[3,1,5],[0,0,1], [-1,3,3] ])
+E.rref()
+\end{verbatim}
+
+$
+RREF(A) = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+$, $
+RREF(B) = \begin{bmatrix} 
+1 & 0 & 1 & 0 \\ 
+0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+\end{bmatrix}
+$ \\$
+RREF(C) = \begin{bmatrix} 
+1 & 0 & 0 & -1 & 1 \\ 
+0 & 1 & 0 & -1 & 1 \\ 
+0 & 0 & 1 & 1 & 0 \\ 
+0 & 0 & 0 & 0 & 0 \\ 
+\end{bmatrix}
+$\\$RREF(D) = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+$, $RREF(E) = \begin{bmatrix} 
+1 & 0 & 0\\ 
+0 & 1 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0\\
+\end{bmatrix}
+$\\
+\\
+Span (all pivot rows in the RREF): A, D\\
+Linearly Independent (RREF has all pivot columns): A, D, E\\
+Basis (all pivot rows and columns in the RREF): A, D\\
+None of the above: B, C
+\\
+\\
+\textbf{Activity 2.6.6}\\
+\\
+If $\left\{ \vec{v}_{1}, \vec{v}_{2}, \vec{v}_{3}, \vec{v}_{4}  \right\}$ is a basis for $\matbbb{R}^{4}$ that means RREF would be:\\
+\begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}\\
+\\
+This would be the identity matrix, with pivots in all rows and columns.\\
+\\
+\textbf{Fact 2.6.7}\\
+A basis for $R^{n}$ must have n vectors and its square matrix must reduce to the identity matrix containing all 0s except for 1 along the diagonal pointing down and to the right.\\
+\\
+\textbf{Observation 2.7.1} - subspace of a vector space is a subset that is itself a vector space.\\
+\\
+One easy way to construct a subspace is to take the span of set, but a linearly dependent set contains “redundant” vectors. For example, only two of the three vectors in the following image are needed to span the planar subspace.\\
+\\
+\\
+\\
+\textbf{Activity 2.7.2} Consider the subspace of $\mathbb{R}^{4}$ given by:\\
+\\
+$
+W = span =  
+\left\{ 
+\begin{bmatrix} 
+2\\ 3\\ 0\\ 1\\
+\end{bmatrix},
+\begin{bmatrix} 
+2\\ -3\\ 2\\-3\\ 
+\end{bmatrix},
+\begin{bmatrix} 
+2\\ -3\\ 2\\ -3\\
+\end{bmatrix},
+\begin{bmatrix} 
+1\\ 5\\ -1\\ 0\\
+\end{bmatrix} 
+\right\}$
+\\
+
+(a) Mark the parts of the RREF of the matrix to show what parts show that W's spanning set is linearly dependent.
+
+\begin{verbatim}
+W=Matrix(QQ,[ [2,2,2,1],[3,0,-3,5],[0,1,2,-1], [1,-1,-3,0] ])
+W.rref()
+\end{verbatim}
+\\
+RREF(W):\\
+\\
+\begin{bmatrix} 
+1 & 0 & -1 & 0 \\ 
+0 & 1 & 2 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+\end{bmatrix}\\
+\\
+Linearly Independent means RREF has all pivot columns, but column 3 does not have a pivot so this is a linearly dependent system. \\
+\\
+(b) Find a basis for W by removing a vector from its spanning set to make it linearly independent. \\
+\\
+Drop 3rd vector because it isn't a pivot column.\\
+\begin{verbatim}
+W=Matrix(QQ,[ [2,2,1],[3,0,5],[0,1,-1], [1,-1,0] ])
+W.rref()
+\end{verbatim}
+RREF(W):\\
+\\
+\begin{bmatrix} 
+1 & 0 & 0 \\ 
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+\end{bmatrix}\\
+\\
+\textbf{Fact 2.7.3:} To compute a basis for the subspace, simply remove the vectors corresponding to the non-pivot columns of the RREF.
+\end{document}
