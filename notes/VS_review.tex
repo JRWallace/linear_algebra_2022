@@ -1,0 +1,549 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\renewcommand{\thesection}{}
+\begin{document}\\
+\tableofcontents
+\newpage
+\section{VS1}\\
+
+A vector space V is any set of mathematical objects, called vectors, and a set of numbers, called scalars, with associated addition and multiplication operations that satisfy the following properties:\\
+\\
+1. Vector addition is associative:\\
+$\vec{u}\oplus(\vec{v}\oplus\vec{w}) = (\vec{u}\oplus\vec{v})\oplus\vec{w}$\\
+\\
+2. Vector addition is communicative:\\
+$\vec{v}\oplus\vec{w} = \vec{w}\oplus\vec{v}$\\
+\\
+3. There's an additive identity that exists $\vec{z}$ where:\\
+$\vec{v}\oplus\vec{z}=\vec{v}$\\
+\\
+4. There's an additive inverse $\vec{-v}$ where:\\
+$\vec{-v}\oplus\vec{v}=\vec{z}$\\
+\\
+Note that the additive inverse for (x,y) is some other element for which when you add them together, you get back the additive identity \\
+\\
+5. Scalar multiplication is associative\\
+${a}(\odot{b}\odot\vec{v}) = (ab)\odot\vec{v}$\\
+\\
+6. 1 is a multiplicative identity\\
+${1}\odot\vec{v} = \vec{v}$\\
+\\
+7. Scalar multiplication distributes over vector addition\\
+${a}\odot(\vec{u}\oplus\vec{v}) = ({a}\odot\vec{u})\oplus({a}\odot\vec{v})$\\
+\\
+8. Scalar multiplication distributes over scalar addition \\
+$(a+b)\odot\vec{v} = (a\odot\vec{v})\oplus(b\odot\vec{v})$\\
+\newpage
+\section{VS2}\\
+\\
+A \textbf{linear combination} of a set of vectors $\left\{\vec{v}_{1}, \vec{v}_{2}, \vec{v}_{3}\right\}$ is given by $\left\{c_{1}\vec{v}_{1}, c_{2}\vec{v}_{2}, c_{3}\vec{v}_{3}\right\}$\\
+\\
+The \textbf{span} of a set of vectors is the collection of all linear combinations of that set: $span\left\{\vec{v}_{1}, \vec{v}_{2}, \vec{v}_{i}\right\} = $\left\{c_{1}\vec{v}_{1}, c_{2}\vec{v}_{2}, c_{i}\vec{v}_{i} \Bigg| c_{i} \in \mathbb{R} \right\}$\\
+\\
+A vector $\vec{b}$ belongs to a span $\left\{\vec{v}_{1}, \vec{v}_{2}, \vec{v}_{3}\right\}$ if and only if the vector equation ${x_{1}\vec{v}_{1} + x_{2}\vec{v}_{2} + x_{3}\vec{v}_{3} = \vec{b} \right\}$ is consistent.
+
+\subsection*{Activity 2.2.6}\\
+The vector $ \left[\begin{matrix} -1 \\ -6 \\ 1 \\ \end{matrix}\right]$ belongs to span $\left\{ \left[\begin{matrix}1 \\ 0 \\ -3 \\ \end{matrix}\right] ,\left[\begin{matrix} -1 \\ -3 \\ 2 \\ \end{matrix}\right] \right\}$ exactly when there exists a solution to the vector equation $x_{1}\left[\begin{matrix}1 \\ 0 \\ -3 \\ \end{matrix}\right] + x_{2} \left[\begin{matrix} -1 \\ -3 \\ 2 \\ \end{matrix}\right] = \left[\begin{matrix} -1 \\ -6 \\ 1 \\ \end{matrix}\right]$
+
+As a system of equations:\\
+\\
+{1}x_1 - {1}x_2= -1\\
+{0}x_1 - {3}x_2 = -6\\
+{-3}x_1 + {2}x_2 = 1\\
+\\
+
+As a matrix:
+$$
+\begin{bmatrix} 
+1  & -1 & -1 \\ 
+0 & -3 & -6 \\
+-3 & 2 & 1 \\
+\end{bmatrix}
+$$
+
+In RREF:
+
+$$
+\begin{bmatrix} 
+1  & 0 & 0 \\ 
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+$$\\
+\\
+\subsection*{Checkit VS2.4}\\
+\\
+The vector $\left[\begin{matrix} 3 \\ 1 \\ -3 \\ -2 \end{matrix}\right]$ is a linear combination of 
+$\left[\begin{matrix} 1 \\ 0 \\ -2 \\ -1 \end{matrix}\right],
+\left[\begin{matrix} 4 \\ 1 \\ -5 \\ -3 \end{matrix}\right],
+\left[\begin{matrix} -9 \\ -2 \\ 12 \\ 7 \end{matrix}\right]$ \\
+\\
+As a system of equations:\\
+\\
+{1}x_1 + {4}x_2 - {9}x_3 = 3\\
+{0}x_1 + {1}x_2 - {2}x_3 = 1\\
+{-2}x_1 - {5}x_2 + {12}x_3 = -3\\
+{-1}x_1 - {3}x_2 + {7}x_3 = -2\\
+\\
+
+As a matrix:
+$$
+\begin{bmatrix} 
+1  & 4 & -9 & 3\\ 
+0 & 1 & -2 & 1\\
+-2 & -5 & 12 & -3\\
+-1 & -3 & 7 & -2\\
+\end{bmatrix}
+$$\\
+\\
+A=Matrix(QQ,[ [1,4,-9,3],[0,1,-2,1],[-2,-5,12,-3],[-1,-3,7,-2] ])\\
+A.rref()\\
+\\
+In RREF:
+
+$$
+\begin{bmatrix} 
+1 & 0 & -1 & -1 \\ 
+0 & 1 & -2 & 1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{bmatrix}
+$$\\
+\\
+So, $\left[\begin{matrix} 3 \\ 1 \\ -3 \\ -2 \end{matrix}\right]$ is a linear combination of 
+$\left[\begin{matrix} 1 \\ 0 \\ -2 \\ -1 \end{matrix}\right],
+\left[\begin{matrix} 4 \\ 1 \\ -5 \\ -3 \end{matrix}\right],
+\left[\begin{matrix} -9 \\ -2 \\ 12 \\ 7 \end{matrix}\right]$ \\
+
+Example:
+$-1\left[\begin{matrix} 1 \\ 0 \\ -2 \\ -1 \end{matrix}\right]
++1\left[\begin{matrix} 4 \\ 1 \\ -5 \\ -3 \end{matrix}\right] = 
+\left[\begin{matrix} 3 \\ 1 \\ -3 \\ -2 \end{matrix}\right]$ \\
+
+This is because columns 1 and 2 are our pivots/bound variables. Column 1 corresponds to the first vector (1,0,-2,-1) and it has a pivot on row 1. We look at the last column on row 1 and see that it is a -1, so we multiply that vector (1,0,-2,-1) by -1. Similarly for the pivot in column 2, the last column on that row is a 1, so we multiply that vector (4,1,-5,-3) by 1 and this gives us what linear combinations will give back (3,1,-3,-2). Since column 3 is free, we don't have to consider it in our calculations here.
+\newpage
+\section{VS3}\\
+
+Any single non-zero vector/number x in $\mathbb{R}^{1}$ spans $\mathbb{R}^{1}$ since $\mathbb{R}^{1} = \left\{ cx \big| c\in \mathbb{R} \right\}$\\
+\\
+At least n vectors are required to span $\mathbb{R}^{n}$\\
+\\
+
+\subsection*{Activity 2.3.6}\\
+
+Write a statement involving the solutions of a vector equation that is equivalent to each claim below:\\
+\\
+The set of vectors $\left\{
+ \left[\begin{matrix} 1 \\ -1 \\ 2 \\ 0 \end{matrix}\right],
+ \left[\begin{matrix} 3 \\ -2 \\ 3 \\ 3 \end{matrix}\right],
+ \left[\begin{matrix} 10 \\ -7 \\ 11 \\ 9 \end{matrix}\right],
+ \left[\begin{matrix} -6 \\ 3 \\ -3 \\ -9 \end{matrix}\right]
+ \right\}$ spans $\mathbb{R}^{4}$.\\
+\\
+The set of vectors $\left\{
+ \left[\begin{matrix} 1 \\ -1 \\ 2 \\ 0 \end{matrix}\right],
+ \left[\begin{matrix} 3 \\ -2 \\ 3 \\ 3 \end{matrix}\right],
+ \left[\begin{matrix} 10 \\ -7 \\ 11 \\ 9 \end{matrix}\right],
+ \left[\begin{matrix} -6 \\ 3 \\ -3 \\ -9 \end{matrix}\right]
+ \right\}$ does not span $\mathbb{R}^{4}$.\\
+\\
+Basically, can we get any vector in $\mathbb{R}^{4}$ through some linear combination of these vectors? Are there any vectors in $\mathbb{R}^{4}$ that we can't get?\\
+\\
+Convert this set of vectors into a matrix and compute its RREF:\\
+\\
+$$
+\begin{bmatrix} 
+1 & 3 & 10 & -6\\ 
+-1 & -2 & -7 & 3\\
+2 & 3 & 11 & -3\\
+0 & 3 & 9 & -9\\
+\end{bmatrix}
+$$\\
+A=Matrix(QQ,[ [1,3,10,-6],[-1,-2,-7,3],[2,3,11,-3],[0,3,9,-9] ])\\
+A.rref()\\
+\\
+
+RREF:\\
+$$
+\begin{bmatrix} 
+1 & 0 & 1 & 3\\ 
+0 & 1 & 3 & -3\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+\end{bmatrix}
+$$\\
+
+We only have bound variables for x1 and x2, x3 and 4 are free. This means that for some vectors in $\mathbb{R}^{4}$, we won't have a solution. For example, the vector $\left[\begin{matrix} 1 \\ 1 \\ 1 \\ 1 \end{matrix}\right]$ would give a contradiction/inconsistent system.
+
+If the RREF matrix was: $\begin{bmatrix} 
+1 & 0 & 0 & 0\\ 
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+\end{bmatrix}
+$ then we would have a system that spanned all of $\mathbb{R}^{4}$
+
+\subsection*{Checkit VS3.1}
+ Write a statement involving the solutions of a vector equation that's equivalent to each claim: 
+
+\\
+The set of vectors $\left\{
+ \left[\begin{matrix} 1 \\ 3 \\ 10 \\ -6 \end{matrix}\right],
+ \left[\begin{matrix} -1 \\ -2 \\ -7 \\ 3 \end{matrix}\right],
+ \left[\begin{matrix} 2 \\ 3 \\ 11 \\ -3 \end{matrix}\right],
+ \left[\begin{matrix} 0 \\ 3 \\ 9 \\ -9 \end{matrix}\right]
+ \right\}$ spans $\mathbb{R}^{4}$.\\
+\\
+\\
+The set of vectors $\left\{
+ \left[\begin{matrix} 1 \\ 3 \\ 10 \\ -6 \end{matrix}\right],
+ \left[\begin{matrix} -1 \\ -2 \\ -7 \\ 3 \end{matrix}\right],
+ \left[\begin{matrix} 2 \\ 3 \\ 11 \\ -3 \end{matrix}\right],
+ \left[\begin{matrix} 0 \\ 3 \\ 9 \\ -9 \end{matrix}\right]
+ \right\}$ does not span $\mathbb{R}^{4}$.\\
+\\
+Answer:\\
+\\
+The vector equation 
+ $x_{1}\left[\begin{matrix} 1 \\ 3 \\ 10 \\ -6 \end{matrix}\right]+
+ x_{2}\left[\begin{matrix} -1 \\ -2 \\ -7 \\ 3 \end{matrix}\right]+
+ x_{3}\left[\begin{matrix} 2 \\ 3 \\ 11 \\ -3 \end{matrix}\right]+
+ x_{4}\left[\begin{matrix} 0 \\ 3 \\ 9 \\ -9 \end{matrix}\right] = \vec{v}$ spans $\mathbb{R}^{4}$.\\
+\\
+
+
+\newpage
+\section{VS4}\\
+
+A \textbf{subset} of a vector space is called a \textbf{subspace} if it is a vector space on its own, operations of addition and multiplication from the parent vector space are inherited by the child subspace. See VS1 for more details on how to check that we are working with a vector space.\\
+\\
+Consider two non-colinear vectors in $\mathbb{R}^{3}$. If we look at all linear combinations of those two vectors (that is, their span), we end up with a plane within  $\mathbb{R}^{3}$. Call this plane $\mathbb{S}$. Note the similarities between a planar subspace spanned by two non-colinear vectors in  $\mathbb{R}^{3}$ and the Euclidean plane $\mathbb{R}^{2}$. While they are not the same thing (and shouldn't be referred to interchangably), algebraists call such similar spaces isomorphic; we'll learn what this means more carefully in a later chapter.\\
+\\
+Any subset $\mathbb{S}$ of a vector space V that contains the additive identity
+satisfies the eight vector space properties in VS1 automatically, since the operations were well-defined for the parent vector space.\\
+\\
+\textbf{However, to verify that it is a subspace, we still need to make sure that addition and multiplication make sense when using only vectors from $\mathbb{S}$. We need to check:}\\
+\\
+- The set is closed under addition (for any $\vec{u},\vec{v} \in {S}$, the sum of $\vec{u} + \vec{v}$ is also in S.)\\
+\\
+- The set is closed under scalar multiplication (for any $\vec{u} \in {S}$ and scalar c $\in$ $\mathbb{R}$, the product $c\vec{u}$ is also in S.)\\
+\\
+Since 0 is a scalar and $0\vec{v}=\vec{z}$ for any vector $\vec{v}$, a nonempty set that is closed under scalar multiplication must contain the zero vector $\vec{z}$ for that vector space.\\
+\\
+Put another way, you can check any of the following to show that a nonempty subset W is not a subspace:\\
+\\
+- Show that $\vec{0} \notin W$\\
+- Find $\vec{u}, \vec{v} \in W$ such that $\vec{u} + \vec{v} \notin W$\\
+- Find c $\in$ $\mathbb{R},\vec{v}$ $\in$ W such that $c\vec{v} \notin W$
+\\
+\subsection*{Activity 2.4.6}\\
+Consider the following two sets of Euclidean vectors and explain why one is a subset of $\mathbb{R}$ and the other is not.\\
+$W = $\left\{\left[\begin{matrix}x\\y\\z\\w\end{matrix}\right] \Bigg| x+y = 3z+2w \right\}$ 
+$U = $\left\{\left[\begin{matrix}x\\y\\z\\w\end{matrix}\right] \Bigg| x+y = 3z+w^{2} \right\}$\\
+\\
+\textbf{1. Is W closed under addition?}\\
+\\
+Let $\left[\begin{matrix}x_{1}\\y_{1}\\z{_1}\\w_{1}\end{matrix}\right]$, $\left[\begin{matrix}x_{2}\\y_{2}\\z{_2}\\w_{2}\end{matrix}\right]$ $\in$ W.  Is $\left[\begin{matrix}x_{1}\\y_{1}\\z{_1}\\w_{1}\end{matrix}\right]$ + $\left[\begin{matrix}x_{2}\\y_{2}\\z{_2}\\w_{2}\end{matrix}\right]$ $\in$ W? \\
+\\
+\\
+$\left[\begin{matrix}x_{1}\\y_{1}\\z{_1}\\w_{1}\end{matrix}\right]$ + $\left[\begin{matrix}x_{2}\\y_{2}\\z{_2}\\w_{2}\end{matrix}\right]$ = $\left[\begin{matrix}x_{1} + x_{2}\\y_{1} + y_{2}\\z_{1} + z{_2}\\w_{1} + w_{2}\end{matrix}\right]$\\
+\\
+\\
+We know vectors in W satisfty $x+y = 3z+2w$, therefore\\
+$x_{1}+y_{1} = 3z_{1}+2w_{1}$ and \\
+$x_{2}+y_{2} = 3z_{2}+2w_{2}$ and \\
+\\
+\textbf{Does ($x_{1} + x_{2}) + (y_{1} + y_{2}) = 3(z_{1} + z{_2}) + 2(w_{1} + w_{2})$?}\\
+\\
+Re-group the x and y:\\
+$ (x_{1} + x_{2}) + ( y_{1} + y_{2})  = (x_{1} + y_{1}) + (x_{2} + y_{2})$\\
+\\
+So:\\
+$(x_{1} + y_{1}) + (x_{2} + y_{2}) =  (3z_{1}+2w_{1}) + (3z_{2}+2w_{2})$\\
+\\
+Regroup terms again:
+\\
+$(x_{1} + y_{1}) + (x_{2} + y_{2}) =  3(z_{1}+z_{2}) + 2(w_{1} + w_{2})$\\
+\\
+\textbf{Therefore: Yes, W is closed under addition.}\\
+\\
+\textbf{2. Is W closed under multiplication?}
+\\
+Let $\left[\begin{matrix}x_{1}\\y_{1}\\z{_1}\\w_{1}\end{matrix}\right]$ $\in$ W and let c $\in$ $\mathbb{R}$.  Is $c \left[\begin{matrix}x_{1}\\y_{1}\\z{_1}\\w_{1}\end{matrix}\right]$ $\in$ W?\\
+\\
+Since we know already that $x+y = 3z+2w$, we know that $x_{1}+y_{1} = 3z_{1}+2w_{1}$. \\
+Is $cx_{1} + cy_{1} = c(3z_{1} + 2w_{1})$?\\
+\\
+$cx_{1} + cy_{1} = c(x_{1} + y_{1})$\\
+$cx_{1} + cy_{1} = c(3z_{1} + 2w_{1})$\\
+$cx_{1} + cy_{1} = 3(cz_{1}) + 2(cw_{1})$\\
+\\
+\textbf{Therefore: Yes, W is closed under scalar multiplication.}\\
+\\
+\textbf{W is closed under addition and scalar multiplication and so is a subset  of $\mathbb{R}$.}\\
+\\
+\\
+\\
+\textbf{1. Is U closed under addition?}\\
+\\
+Let $\vec{v}$ = $\left[\begin{matrix}x_{1}\\y_{1}\\z{_1}\\w_{1}\end{matrix}\right] \in U$ and $\vec{w}$ = $\left[\begin{matrix}x_{2}\\y_{2}\\z{_2}\\w_{2}\end{matrix}\right] \in U$ \\
+\\
+Since we know our vectors came from U, we also know that: \\
+\\
+$x_{1} + y_{1} = 3z_{1} + w_{1}^{2}$ \textbf{and} $x_{2} + y_{2} = 3z_{2} + w_{2}^{2}$\\
+\\
+\textbf{To see if $\vec{v} + \vec{w} \in U$, we need to see answer:}\\
+\textbf{Does $(x_{1} + x_{2}) + (y_{1} + y_{2}) = 3(z_{1} + z_{2}) + (w_{1} + w_{2})^{2}$}\\
+\\
+Regroup:\\
+$(x_{1} + x_{2}) + (y_{1} + y_{2}) = (x_{1} + y_{1}) + (x_{2} + y_{2})$\\
+\\
+So:\\
+$(x_{1} + y_{1}) + (x_{2} + y_{2}) = (3z_{1} + w_{1}^{2}) + (3z_{2} + w_{2}^{2})$\\
+\\
+Regroup:\\
+$(x_{1} + y_{1}) + (x_{2} + y_{2})$ = 3(z_{1} + z_{2}) + (w_{1}^{2} + w_{2}^{2})$\\
+\\
+Therefore:\\
+\\
+Only when $(w_{1}^{2} + w_{2}^{2}) = (w_{1} + w_{2})^{2}$ is $\vec{v} + \vec{w} \in U$\\
+\\
+For example, $\vec{v}$ = $\left[\begin{matrix}0\\1\\0\\1\end{matrix}\right]$ belongs to U, but $2\vec{v}$ = $\left[\begin{matrix}0\\2\\0\\2\end{matrix}\right]$ does not.\\
+\\
+\textbf{Therefore: U is not closed under scalar multiplication, therefore is not a subspace.}\\
+\newpage
+\section{VS5}\\
+We say that a set of vectors is linearly dependent if one vector in the set belongs to the span of the others. Otherwise, we say the set is linearly independent. \\
+\\
+The \textbf{span} of a set of vectors is the collection of all linear combinations of that set: $span\left\{\vec{v}_{1}, \vec{v}_{2}, \vec{v}_{i}\right\} = $\left\{c_{1}\vec{v}_{1}, c_{2}\vec{v}_{2}, c_{i}\vec{v}_{i} \Bigg| c_{i} \in \mathbb{R} \right\}$\\
+\\
+Consider the case of three vectors in $\mathbb{R}^{3}$ space. They all are on the same planar subspace (e.g., the same 2d plane), but only two vectors are needed to span the plane, so the set is linearly dependent.\\
+\\
+For any vector space, the set $\left\{ \vec{v}_{1},\vec{v}_{2},...\vec{v}_{n} \right\}$
+is linearly dependent if and only if the vector equation $ x_{1}\vec{v}_{1},x_{2}\vec{v}_{2},...x_{n}\vec{v}_{n} = \vec{0}$
+is consistent with infinitely many solutions.\\
+\\
+For Activity 2.5.3 this set is linear dependent bc that's the definition of linear dependence.
+For part b, there's infinite solutions. 
+Why? Because w would be a free variable in the RREF if you write out the RREF for v1+v2+v3+w = 0
+What do we mean by the $\vec{0}$? in this case, it just means a column of zeroes.\\
+\\
+A set of Euclidean vectors is linearly dependent if and only if the RREF of the corresponding matrix has a column without a pivot position.\\
+\\
+Set if vectors is independent if RREF has all pivot columns\\
+Set of vectors spans R if RREF has all pivot rows\\
+Set of vectors is linearly independent if the vector equation has a unique solution \\
+\\
+\newpage
+\section{VS6}
+\textbf{Activity 2.6.2:}\\
+$\vec{e}_{1} = \hat{i} = \begin{bmatrix} 
+1\\ 
+0\\
+0\\
+\end{bmatrix}$, $\vec{e}_{2} = \hat{j} =\begin{bmatrix} 
+0\\ 
+1\\
+0\\
+\end{bmatrix}$, $\vec{e}_{3} = \hat{k} =\begin{bmatrix} 
+0\\ 
+0\\
+1\\
+\end{bmatrix}$\\
+\\
+a) $\vec{v}$ can be expressed as a linear combination of $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{e}_{3}$ because we have a pivot in every row, we can set i, j, and k to be any scalar to get any values of $\vec{v}$ \\
+\\
+b) If $\vec{w} = \begin{bmatrix} 
+1\\ 
+1\\
+0\\
+\end{bmatrix}$, $\vec{v}$ can't be expressed as a linear combination of $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{w}$ because we don't have a pivot in row 3, so not spanning set. \\
+\\
+c) All vectors in $\mathbb{R}^{3}$ can be written as linear combinations of $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{e}_{3}$  because we have a pivot in every row and column - linearly independent vectors that span the set\\
+\\
+\textbf{Observation 2.6.3:} A basis is a linearly independent set that spans a vector space. In example 2.6.2, $\vec{e}_{1}$, $\vec{e}_{2}$, and $\vec{e}_{3}$ is an example of the standard basis vectors of $\mathbb{R}^{3}$.\\
+\\
+\textbf{Observation 2.6.4} A basis may be thought of as a collection of building blocks for a vector space, since every vector in the space can be expressed as a unique linear combination of basis vectors.\\
+\\
+\textbf{Observation 2.5.8 says:}\\
+- A set of vectors is \textbf{linearly independent} if and only if the RREF has all pivot columns.\\
+- A set of $\mathbb{R}^{m}$ vectors \textbf{spans $\mathbb{R}^{m}$} if the RREF has all pivot rows\\
+\\
+\textbf{Definition 2.6.3 says:}\\
+- A basis is a linearly independent set that spans a vector space. \\
+(This means it should have pivots in every row and column.)\\
+\\
+\textbf{Activity 2.6.5}\\
+Label each of the sets as: spanning $\mathbb{R}^{4}$, linearly independent, or a basis for $\mathbb{R}^{4}$
+\\
+$
+A = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+$, $
+B = \begin{bmatrix} 
+2 & 2 & 4 & -3 \\ 
+3 & 0 & 3 & 0 \\
+0 & 0 & 0 & 1 \\
+-1 & 3 & 2 & 3 \\
+\end{bmatrix}
+$, $
+C = \begin{bmatrix} 
+2 & 2 & 3 & -1 & 4 \\ 
+3 & 0 & 13 & 10 & 3 \\ 
+0 & 0 & 7 & 7 & 0 \\ 
+-1 & 3 & 16 & 14 & 2 \\ 
+\end{bmatrix}
+$\\$D = \begin{bmatrix} 
+2 & 4 & -3 & 3 \\ 
+3 & 3 & 0 & 6 \\
+0 & 0 & 1 & 1 \\
+-1 & 2 & 3 & 5 \\
+\end{bmatrix}
+$, $E = \begin{bmatrix} 
+5 & -2 & 4\\ 
+3 & 1 & 5\\
+0 & 0 & 1\\
+-1 & 3 & 3\\
+\end{bmatrix}
+$\\
+\\
+
+\begin{verbatim}
+B=Matrix(QQ,[ [2,2,4,-3],[3,0,3,0],[0,0,0,1], [-1,3,2,3] ])
+B.rref()
+C=Matrix(QQ,[ [2,2,3,-1,4],[3,0,13,10,3],[0,0,7,7,0], [-1,3,16,14,2] ])
+C.rref()
+D=Matrix(QQ,[ [2,4,-3,3],[3,3,0,6],[0,0,1,1], [-1,2,3,5] ])
+D.rref()
+E=Matrix(QQ,[ [5,-2,4],[3,1,5],[0,0,1], [-1,3,3] ])
+E.rref()
+\end{verbatim}
+
+$
+RREF(A) = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+$, $
+RREF(B) = \begin{bmatrix} 
+1 & 0 & 1 & 0 \\ 
+0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+\end{bmatrix}
+$ \\$
+RREF(C) = \begin{bmatrix} 
+1 & 0 & 0 & -1 & 1 \\ 
+0 & 1 & 0 & -1 & 1 \\ 
+0 & 0 & 1 & 1 & 0 \\ 
+0 & 0 & 0 & 0 & 0 \\ 
+\end{bmatrix}
+$\\$RREF(D) = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}
+$, $RREF(E) = \begin{bmatrix} 
+1 & 0 & 0\\ 
+0 & 1 & 0\\
+0 & 0 & 1\\
+0 & 0 & 0\\
+\end{bmatrix}
+$\\
+\\
+Span (all pivot rows in the RREF): A, D\\
+Linearly Independent (RREF has all pivot columns): A, D, E\\
+Basis (all pivot rows and columns in the RREF): A, D\\
+None of the above: B, C
+\\
+\\
+\textbf{Activity 2.6.6}\\
+\\
+If $\left\{ \vec{v}_{1}, \vec{v}_{2}, \vec{v}_{3}, \vec{v}_{4}  \right\}$ is a basis for $\matbbb{R}^{4}$ that means RREF would be:\\
+\begin{bmatrix} 
+1 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{bmatrix}\\
+\\
+This would be the identity matrix, with pivots in all rows and columns.\\
+\\
+\textbf{Fact 2.6.7}\\
+A basis for $R^{n}$ must have n vectors and its square matrix must reduce to the identity matrix containing all 0s except for 1 along the diagonal pointing down and to the right.\\
+\\
+\textbf{Observation 2.7.1} - subspace of a vector space is a subset that is itself a vector space.\\
+\\
+One easy way to construct a subspace is to take the span of set, but a linearly dependent set contains “redundant” vectors. For example, only two of the three vectors in the following image are needed to span the planar subspace.\\
+\\
+\\
+\newpage
+\section{VS7}
+\textbf{Activity 2.7.2} Consider the subspace of $\mathbb{R}^{4}$ given by:\\
+\\
+$
+W = span =  
+\left\{ 
+\begin{bmatrix} 
+2\\ 3\\ 0\\ 1\\
+\end{bmatrix},
+\begin{bmatrix} 
+2\\ -3\\ 2\\-3\\ 
+\end{bmatrix},
+\begin{bmatrix} 
+2\\ -3\\ 2\\ -3\\
+\end{bmatrix},
+\begin{bmatrix} 
+1\\ 5\\ -1\\ 0\\
+\end{bmatrix} 
+\right\}$
+\\
+
+(a) Mark the parts of the RREF of the matrix to show what parts show that W's spanning set is linearly dependent.
+
+\begin{verbatim}
+W=Matrix(QQ,[ [2,2,2,1],[3,0,-3,5],[0,1,2,-1], [1,-1,-3,0] ])
+W.rref()
+\end{verbatim}
+\\
+RREF(W):\\
+\\
+\begin{bmatrix} 
+1 & 0 & -1 & 0 \\ 
+0 & 1 & 2 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+\end{bmatrix}\\
+\\
+Linearly Independent means RREF has all pivot columns, but column 3 does not have a pivot so this is a linearly dependent system. \\
+\\
+(b) Find a basis for W by removing a vector from its spanning set to make it linearly independent. \\
+\\
+Drop 3rd vector because it isn't a pivot column.\\
+\begin{verbatim}
+W=Matrix(QQ,[ [2,2,1],[3,0,5],[0,1,-1], [1,-1,0] ])
+W.rref()
+\end{verbatim}
+RREF(W):\\
+\\
+\begin{bmatrix} 
+1 & 0 & 0 \\ 
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+\end{bmatrix}\\
+\\
+\textbf{Fact 2.7.3:} To compute a basis for the subspace, simply remove the vectors corresponding to the non-pivot columns of the RREF.
+
+
+\end{document}\\
