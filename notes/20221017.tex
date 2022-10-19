@@ -1,0 +1,326 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\section*{Oct 17 notes}
+\textbf{Definition 2.6.3} A basis is a linearly independent set that spans a vector
+space.\\
+\\
+\textbf{Fact 2.7.3} to compute a basis for the subspace span S, simply remove
+the vectors corresponding to the non-pivot columns of RREF\\
+\\
+\textbf{Fact 2.7.9} Any non-trivial real vector space has infinitely-many different bases,
+but all the bases for a given vector space are exactly the same size (non-trivial means that it isn't just 0 vector).\\
+\\
+\textbf{Definition 2.7.10} The dimension of a vector space is equal to the size of
+any basis for the vector space (number of vectors in basis).\\
+\\
+\noindent \textbf{Activity 2.7.4}\\
+
+Let $W = span\left\{
+\left[\begin{matrix} 1 \\ 3 \\ 1 \\ -1 \end{matrix}\right] ,
+\left[\begin{matrix} 2 \\ -1 \\ 1 \\ 2 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 5 \\ 3 \\ 0 \end{matrix}\right] , 
+\left[\begin{matrix} 3 \\ 2 \\ 2 \\ 1 \end{matrix}\right] 
+\right\}$. Find a basis for $W$.\\
+\\
+Calculate the RREF of the matrix:
+\begin{verbatim}
+W=Matrix(QQ,[ [1,2,4,3],[3,-1,5,2],[1,1,3,2], [-1,2,0,1] ])
+W.rref()
+[1 0 2 1]
+[0 1 1 1]
+[0 0 0 0]
+[0 0 0 0]
+\end{verbatim}
+First two are pivot columns, the second two are free variables, so the first two columns are the 'basis' of the subspace $W$.\\
+subspace $W = span\left\{
+\left[\begin{matrix} 1 \\ 3 \\ 1 \\ -1 \end{matrix}\right] ,
+\left[\begin{matrix} 2 \\ -1 \\ 1 \\ 2 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 5 \\ 3 \\ 0 \end{matrix}\right] , 
+\left[\begin{matrix} 3 \\ 2 \\ 2 \\ 1 \end{matrix}\right] 
+\right\}$ has $\left\{
+\left[\begin{matrix} 1 \\ 3 \\ 1 \\ -1 \end{matrix}\right] ,
+\left[\begin{matrix} 2 \\ -1 \\ 1 \\ 2 \end{matrix}\right]
+\right\}$ as a basis.\\
+\\
+\newpage
+\noindent \textbf{Activity 2.7.5}\\
+\\
+Let $W$ be the subspace of $\mathcal{P}$ given by\\
+W = span $\left\{
+x^{3} + 3x^{2} + x -1, 
+2x^{3} - x^{2} + x + 2, 
+4x^{3} + 5x^{2} + 3x, 
+3x^{3} + 2x^{2} + 2x +1 \right\}$, find a basis for $W$.\\
+\\
+$x^{3} + 3x^{2} + x - 1$\\
+$2x^{3} - x^{2} + x + 2$\\
+$4x^{3} + 5x^{2} + 3x + 0$\\
+$3x^{3} + 2x^{2} + 2x + 1$\\
+\\
+Matrices of polynomial equations should be set up such that all the like-exponents are on the same row, so re-group like exponents.\\
+\\
+\noindent $x^{3} + 2x^{3} + 4x^{3} + 3x^{3}$ \\
+$ 3x^{2} - x^{2} + 5x^{2} + 2x^{2}$\\
+$ x + x + 3x + 2x$\\
+$-1 + 2 + 0 + 1$\\
+\\
+As matrix:\\
+\\
+$\left[\begin{matrix}
+1 & 2 & 4 & 3 \\
+3 & -1 & 5 & 2 \\
+1 & 1 & 3 & 2 \\
+-1 & 2 & 0 & 1 \\
+\end{matrix}\right]$\\
+
+\begin{verbatim}
+Matrix(QQ,[
+[1,2,4,3],
+[3,-1,5,2],
+[1,1,3,2],
+[-1,2,0,1]
+]).rref()
+[1 0 2 1]
+[0 1 1 1]
+[0 0 0 0]
+[0 0 0 0]
+\end{verbatim}
+First two are pivots, so the basis of the subspace is:\\
+\\
+$\left[\begin{matrix}
+1 & 2  \\
+3 & -1  \\
+1 & 1  \\
+-1 & 2  \\
+\end{matrix}\right]$\\
+And when we put that back into the format of the original queston:\\
+$\left\{x^{3} + 3x^{2} + x - 1, 2x^{3} - x^{2} + x + 2\right\}$\\
+\\
+\newpage
+\noindent \textbf{Activity 2.7.6}
+
+Let $W$ be the subspace of $M_{2,2}$ given by $W=span=\left\{
+\left[\begin{matrix} 1 & 3\\1 & -1 \end{matrix}\right],
+\left[\begin{matrix} 2 & -1\\1 & 2 \end{matrix}\right],
+\left[\begin{matrix} 4 & 5\\3 & 0 \end{matrix}\right],
+\left[\begin{matrix} 3 & 2\\2 & 1 \end{matrix}\right]
+\right\}$. Find a basis for $W$.\\
+\\
+Multiply each matrix by some scalar (x1, x2, x3, x4)\\
+\\
+$\left[\begin{matrix} 1x_{1} & 3x_{1}\\1x_{1} & -1x_{1} \end{matrix}\right],
+\left[\begin{matrix} 2x_{2} & -1x_{2}\\1x_{2} & 2x_{2} \end{matrix}\right],
+\left[\begin{matrix} 4x_{3} & 5x_{3}\\3x_{3} & 0x_{3} \end{matrix}\right],
+\left[\begin{matrix} 3x_{4} & 2x_{4}\\2x_{4} & 1x_{4} \end{matrix}\right]$\\
+\\
+expand:\\
+$\left[\begin{matrix} (1x_{1} + 2x_{2} + 4x_{3} + 3x_{4}) & (3x_{1} - 1x_{2} + 5x_{3} + 2x_{4})\\ (1x_{1} + 1x_{2} + 3x_{3} + 2x_{4}) & (-1x_{1} + 2x_{2} + 0x_{3} + 1x_{4}) \end{matrix}\right]$\\
+\\
+as matrix:\\
+\\
+$\left[\begin{matrix}
+1 & 2 & 4 & 3 \\
+3 & -1 & 5 & 2 \\
+1 & 1 & 3 & 2 \\
+-1 & 2 & 0 & 1 \\
+\end{matrix}\right]$\\
+\begin{verbatim}
+W=Matrix(QQ,[
+[1,2,4,3],
+[3,-1,5,2],
+[1,1,3,2],
+[-1,2,0,1]
+])
+W.rref()
+[1 0 2 1]
+[0 1 1 1]
+[0 0 0 0]
+[0 0 0 0]
+\end{verbatim}
+The first two pivots are the basis of the subspace: \\
+\\ 
+$\left\{
+\left[\begin{matrix} 1 & 3\\1 & -1 \end{matrix}\right],
+\left[\begin{matrix} 2 & -1\\1 & 2 \end{matrix}\right]
+\right\}$
+\newpage
+\noindent \textbf{Activity 2.7.7}\\
+\\
+S = 
+$\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ 1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ 0 \\ 1 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ -3 \\ 2 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 1 \\ 5 \\ -1 \\ 0 \end{matrix}\right] 
+\right\}$
+T = 
+$\left\{ 
+\left[\begin{matrix} 2 \\ 0 \\ 1 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ -3 \\ 2 \\ -3 \end{matrix}\right] , 
+\left[\begin{matrix} 1 \\ 5 \\ -1 \\ 0 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ 1 \end{matrix}\right] 
+\right\}$\\
+\\
+Find a basis for span $S$ and span $T$\\
+\\
+Span $S$
+\begin{verbatim}
+Matrix(QQ,[
+[2,2,2,1],
+[3,0,-3,5],
+[0,1,2,-1],
+[1,-1,3,0]
+]).rref()
+[1 0 0 0]
+[0 1 0 0]
+[0 0 1 0]
+[0 0 0 1]
+\end{verbatim}\\
+\\
+Basis of span $S$: $\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ 1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ 0 \\ 1 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ -3 \\ 2 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 1 \\ 5 \\ -1 \\ 0 \end{matrix}\right] 
+\right\}$\\
+\\
+Basis of span $T$
+\begin{verbatim}
+Matrix(QQ,[
+[2,2,1,2],
+[0,-3,5,3],
+[1,2,-1,0],
+[-1,-3,0,1]
+]).rref()
+[ 1  0  0  2]
+[ 0  1  0 -1]
+[ 0  0  1  0]
+[ 0  0  0  0]
+\end{verbatim}\\
+\\
+Basis of T\\
+\\
+$\left\{ 
+\left[\begin{matrix} 2 \\ 0 \\ 1 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ -3 \\ 2 \\ -3 \end{matrix}\right] , 
+\left[\begin{matrix} 1 \\ 5 \\ -1 \\ 0 \end{matrix}\right]
+\right\}$\ \\
+\\
+\\
+\newpage
+\noindent \textbf{Activity 2.7.11} Find the dimension of each subspace of $\textbb{R}^{3}$
+by finding for each corresponding matrix.\\
+\\
+$A =\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ 0 \\ 0 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 3 \\ 0 \\ 2 \end{matrix}\right] , 
+\left[\begin{matrix} -3 \\ 0 \\ 1 \\ 3 \end{matrix}\right] 
+\right\}$
+\begin{verbatim}
+A=Matrix(QQ,[
+[2,2,4,-3],
+[3,0,3,0],
+[0,0,0,1],
+[-1,3,2,3]
+])
+A.rref()
+[1 0 1 0]
+[0 1 1 0]
+[0 0 0 1]
+[0 0 0 0]
+\end{verbatim}\\
+\\
+No pivot in column 3, so remove it to get basis:\\
+\\
+$\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ 0 \\ 0 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 3 \\ 0 \\ 2 \end{matrix}\right] , 
+\left[\begin{matrix} -3 \\ 0 \\ 1 \\ 3 \end{matrix}\right] 
+\right\}$\\
+\\
+\noindent\rule{8cm}{0.4pt}\\
+\\
+$B =\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ 0 \\ 0 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 3 \\ 13 \\ 7 \\ 16 \end{matrix}\right] , 
+\left[\begin{matrix} -1 \\ 10 \\ 7 \\ 14 \end{matrix}\right] ,
+\left[\begin{matrix} 4 \\ 3 \\ 0 \\ 2 \end{matrix}\right] 
+\right\}$\\
+\begin{verbatim}
+Matrix(QQ,[
+[2,2,3,-1,4],
+[3,0,13,10,3],
+[0,0,7,7,0],
+[-1,3,16,14,2]
+]).rref()
+[ 1  0  0 -1  1]
+[ 0  1  0 -1  1]
+[ 0  0  1  1  0]
+[ 0  0  0  0  0]
+\end{verbatim}\\
+basis of $B =\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 2 \\ 0 \\ 0 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 3 \\ 13 \\ 7 \\ 16 \end{matrix}\right]
+\right\}$
+\\
+\newpage
+\\
+\noindent $C =\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 3 \\ 0 \\ 2 \end{matrix}\right] , 
+\left[\begin{matrix} -3 \\ 0 \\ 1 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 3 \\ 6 \\ 1 \\ 5 \end{matrix}\right] 
+\right\}$\\
+\begin{verbatim}
+Matrix(QQ,[
+[2,4,-3,3],
+[3,3,0,6],
+[0,0,1,1],
+[-1,2,3,5]
+]).rref()
+[1 0 0 0]
+[0 1 0 0]
+[0 0 1 0]
+[0 0 0 1]
+\end{verbatim}\\
+basis of $C =\left\{ 
+\left[\begin{matrix} 2 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 3 \\ 0 \\ 2 \end{matrix}\right] , 
+\left[\begin{matrix} -3 \\ 0 \\ 1 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 3 \\ 6 \\ 1 \\ 5 \end{matrix}\right] 
+\right\}$\\
+\\
+\noindent\rule{8cm}{0.4pt}\\
+\\
+$D =\left\{ 
+\left[\begin{matrix} 5 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} -2 \\ 1 \\ 0 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 5 \\ 1 \\ 3 \end{matrix}\right] 
+\right\}$
+\begin{verbatim}
+Matrix(QQ,[
+[5,-2,4],
+[3,1,5],
+[0,0,1],
+[-1,3,3]
+]).rref()
+[1 0 0]
+[0 1 0]
+[0 0 1]
+[0 0 0]
+\end{verbatim}\\
+Basis of $D =\left\{ 
+\left[\begin{matrix} 5 \\ 3 \\ 0 \\ -1 \end{matrix}\right] , 
+\left[\begin{matrix} -2 \\ 1 \\ 0 \\ 3 \end{matrix}\right] , 
+\left[\begin{matrix} 4 \\ 5 \\ 1 \\ 3 \end{matrix}\right] 
+\right\}$
+\end{document}
