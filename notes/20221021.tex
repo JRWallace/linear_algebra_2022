@@ -50,7 +50,7 @@ $1x_{3} = -4b $\\
 (b) Rewrite this solution space in set builder notation
 
 $\left\{ \left[ 
-\begin{matrix} -2a - 1b \\ a \\ -4b \\ b  \end{matrix} 
+\begin{matrix} -2a - 1b \\ a \\ -4b \\ b \end{matrix} 
 \right] \Bigg|  a,b \in \mathbb{R} \right\}$\\
 \\
 (c) Rewrite this solution space in the form of a span
@@ -60,27 +60,19 @@ b \left[\begin{matrix} -1 \\ 0 \\ -4 \\ 1  \end{matrix} \right],
 \right\}$\\
 \\
 
-(d) as basis, just take pivot colums:\\
-$1x_{1} + 2x_{2} + 0x_{3} + 1x_{4} = 0$
-$2x_{1} + 4x_{2} - x_{3} - 2x_{4} = 0$
-$3x_{1} + 6x_{2} - x_{3} - 1x_{4} = 0$\\
+(d) Since we can say:\\
+$\left[ 
+\begin{matrix} -2a - 1b \\ a \\ -4b \\ b \end{matrix} \right] =
+a \left[\begin{matrix} -2 \\ 1 \\ 0 \\ 0  \end{matrix} \right]+ 
+b \left[\begin{matrix} -1 \\ 0 \\ -4 \\ 1  \end{matrix} \right],
+\right\}$\\
 \\
-as matrix\\
-\begin{verbatim}
-(Matrix(QQ,[
-[1,2,0,1,0],
-[2,4,-1,-2,0],
-[3,6,-1,-1,0]
-])).rref()
-[1 2 0 1 0]
-[0 0 1 4 0]
-[0 0 0 0 0]
-\end{verbatim}\\
+The basis is:\\
 \\
-should end up with only 2 equations... bc there's only 2 pivots.\\
-\\
-$1x_{1} + 2x_{2} + 1x_{4} = 0$\\
-$1x_{3} + 4x_{4} = 0$\\
+$\left\{
+\left[\begin{matrix} -2 \\ 1 \\ 0 \\ 0  \end{matrix} \right],
+\left[\begin{matrix} -1 \\ 0 \\ -4 \\ 1  \end{matrix}\right] \right\}$\\
+
 \\
 fact 2.9.3 -- the solution space for a homogenous system is a basis for the solution space\\
 \\
