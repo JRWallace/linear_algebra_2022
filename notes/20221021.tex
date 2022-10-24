@@ -1,0 +1,210 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\section*{Oct 21 notes}\\
+Activity 2.9.3.\\
+\\
+Compute a bunch of bases for systems of linear equations. \\
+\\
+Consider the homogeneous system of equations\\
+\\
+(a) Find its solution set (a subspace of $\mathbb{R}^{4}$)\\
+$1x_{1} + 2x_{2} + 0x_{3} + 1x_{4} = 0$
+$2x_{1} + 4x_{2} - x_{3} - 2x_{4} = 0$
+$3x_{1} + 6x_{2} - x_{3} - 1x_{4} = 0$\\
+\\
+as matrix\\
+\\
+$ \left[ \begin{matrix} 
+1 & 2 & 0 & 1 & 0\\
+2 & 4 & -1 &-2 & 0\\
+3 & 6 & -1 &-1 & 0
+\end{matrix}\right]$
+\\
+\begin{verbatim}
+(Matrix(QQ,[
+[1,2,0,1,0],
+[2,4,-1,-2,0],
+[3,6,-1,-1,0]
+])).rref()
+[1 2 0 1 0]
+[0 0 1 4 0]
+[0 0 0 0 0]
+\end{verbatim}\\
+\\
+Corresponds to:\\
+$1x_{1} + 2x_{2} + 0x_{3} + 1x_{4} = 0$\\
+$1x_{3} + 4x_{4} = 0$\\
+\\
+Let free variables  $x_{2} = a$ and $x_{4} = b$\\
+$1x_{1} + 2a + 1b = 0$\\
+$1x_{3} + 4b = 0$\\
+\\
+$1x_{1} =  -2a - 1b$\\
+$1x_{3} = -4b $\\
+\\
+(b) Rewrite this solution space in set builder notation
+
+$\left\{ \left[ 
+\begin{matrix} -2a - 1b \\ a \\ -4b \\ b  \end{matrix} 
+\right] \Bigg|  a,b \in \mathbb{R} \right\}$\\
+\\
+(c) Rewrite this solution space in the form of a span
+$span = \left\{ 
+a \left[\begin{matrix} -2 \\ 1 \\ 0 \\ 0  \end{matrix} \right],
+b \left[\begin{matrix} -1 \\ 0 \\ -4 \\ 1  \end{matrix} \right],
+\right\}$\\
+\\
+
+(d) as basis, just take pivot colums:\\
+$1x_{1} + 2x_{2} + 0x_{3} + 1x_{4} = 0$
+$2x_{1} + 4x_{2} - x_{3} - 2x_{4} = 0$
+$3x_{1} + 6x_{2} - x_{3} - 1x_{4} = 0$\\
+\\
+as matrix\\
+\begin{verbatim}
+(Matrix(QQ,[
+[1,2,0,1,0],
+[2,4,-1,-2,0],
+[3,6,-1,-1,0]
+])).rref()
+[1 2 0 1 0]
+[0 0 1 4 0]
+[0 0 0 0 0]
+\end{verbatim}\\
+\\
+should end up with only 2 equations... bc there's only 2 pivots.\\
+\\
+$1x_{1} + 2x_{2} + 1x_{4} = 0$\\
+$1x_{3} + 4x_{4} = 0$\\
+\\
+fact 2.9.3 -- the solution space for a homogenous system is a basis for the solution space\\
+\\
+Activity 2.9.5\\
+\\
+$2x_{1} + 4x_{2} + 2x_{3} - 4x_{4} = 0$\\
+$-2x_{1} - 4x_{2} + 1x_{3} + 1x_{4} = 0$\\
+$3x_{1} + 6x_{2} - 1x_{3} - 4x_{4} = 0$\\
+\\
+as matrix\\
+\begin{verbatim}
+(Matrix(QQ,[
+[2,4,2,-4,0],
+[-2,-4,1,1,0],
+[3,6,-1,-4,0]
+])).rref()
+[1 2 0 0 0]
+[0 0 1 0 0]
+[0 0 0 1 0]
+\end{verbatim}\\
+\\
+So this means the basis is 3 equations long bc 3 pivots\\
+$1x_{1} + 2x_{2} = 0$\\
+$1x_{3} = 0$\\
+$1x_{4} = 0$\\
+\\
+when you write your solution set youd only have 3 variables 
+Activity 2.9.6
+\\
+\\
+$ x_{1} \left[\begin{matrix} 2 \\ -2 \\ 3 \end{matrix} \right],
+  x_{2} \left[\begin{matrix} 4 \\ -4 \\ 6  \end{matrix} \right],
+  x_{3} \left[\begin{matrix} 2 \\ 1 \\ -1 \end{matrix} \right],
+  x_{4} \left[\begin{matrix} -4 \\ 1 \\ -4 \end{matrix} \right]
+  = \left[\begin{matrix} 0 \\ 0 \\ 0 \end{matrix} \right]
+\right\}$
+\\
+as matrix\\
+\begin{verbatim}
+(Matrix(QQ,[
+[2,4,2,-4,0],
+[-2,-4,1,1,0],
+[3,6,-1,-4,0]
+])).rref()
+[1 2 0 0 0]
+[0 0 1 0 0]
+[0 0 0 1 0]
+\end{verbatim}\\
+\\
+So this means the basis is 3 equations long bc 3 pivots\\
+$1x_{1} + 2x_{2} = 0$\\
+$1x_{3} = 0$\\
+$1x_{4} = 0$\\
+\\
+
+
+
+
+
+Activity 2.9.6\\
+\\
+Activity 2.9.7\\
+\\
+If the solution set is 1 vector its linearly dependent
+for 2.9.7 the only solution is the zero vector, so the basis is just the empty set {}
+
+Observation 2.9.8 if 0 vector is the only solution of a homogenous system then the basis of the solution space is the empty set\\
+a subspace will always contain the 0 vector \\
+
+\textbf{Example B.1.13 VS9}\\
+Consider the homogenous system of equations:\\
+\\
+$1x_{1} + 1x_{2} + 3x_{3} + 1x_{4} + 2x_{5} = 0$\\
+$-3x_{1} + 0x_{2} - 6x_{3} + 6x_{4} + 3x_{5} = 0$\\
+$-1x_{1} + 1x_{2} - 1x_{3} + 1x_{4} + 0x_{5} = 0$\\
+$2x_{1} - 2x_{2} + 2x_{3} - 1x_{4} + 1x_{5} = 0$\\
+\\
+(1) Find the solution space of the system\\
+\\
+Find the RREF:
+\begin{verbatim}
+(Matrix(QQ,[
+[1,1,3,1,2,0],
+[-3,0,-6,6,3,0],
+[-1,1,-1,1,0,0],
+[2,-2,2,-1,1,0]
+])).rref()
+[1 0 2 0 1 0]
+[0 1 1 0 0 0]
+[0 0 0 1 1 0]
+[0 0 0 0 0 0]
+\end{verbatim}\\
+\\
+Since they correspond to the non-pivot columns, let $x_{3} = a, x_{5} = b$\\
+Then we get:\\
+$1x_{1} + 2x_{3} + x_{5} = 0$\\
+$1x_{2} + 1x_{3} = 0$\\
+$x_{3} = a$\
+$x_{4} + x_{5}$\\
+$x_{5} = b$\\
+\\
+So the solution set is:\\
+\\
+
+$\left\{ \left[ 
+\begin{matrix} -2a - 1b \\ -a \\ a \\ -b \\ b \end{matrix} 
+\right] \Bigg|  a,b \in \mathbb{R} \right\}$\\
+\\
+(2) Find the basis of the solution space.\\
+\\
+Since
+$\left[ 
+\begin{matrix} -2a - 1b \\ -a \\ a \\ -b \\ b \end{matrix} 
+\right] = a\left[ 
+\begin{matrix} -2 \\ -1 \\ 1 \\ 0 \\ 0 \end{matrix} 
+\right] + b\left[ 
+\begin{matrix} -1 \\ 0 \\ 0 \\ -1 \\ 1 \end{matrix} 
+\right]$ \\
+\\
+The basis for the solution space is:\\
+\\
+$\left\{
+\left[\begin{matrix} -2 \\ -1 \\ 1 \\ 0 \\ 0 \end{matrix} \right],
+\left[\begin{matrix} -1 \\ 0 \\ 0 \\ -1 \\ 1 \end{matrix}\right] \right\}$\\
+
+
+\end{document}
