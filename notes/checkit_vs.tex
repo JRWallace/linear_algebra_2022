@@ -1,0 +1,303 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\renewcommand{\thesection}{}
+\begin{document}\\
+\tableofcontents
+\newpage
+
+\section{VS2}\\
+
+\subsection*{Checkit 8}\\
+\\
+\textbf{Part 1}\\
+\\
+$\left[\begin{matrix}-8 \\ 6 \\ 0 \\ -4 \end{matrix}\right]$ 
+ is a linear combination of vectors in $\left\{
+ \left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1 \end{matrix}\right], 
+ \left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right], 
+ \left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right]\right\}$ 
+\\
+\\
+(a) Write a statement involving the solutions of a vector equation that's equivalent to this claim.\\
+\\
+There are some scalars, $x_{1}$, $x_{2}$, $x_{3}$ such that this system of vector equations is consistent.\\
+\\
+$x_{1}\left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1 \end{matrix}\right] +  
+ x_{2}\left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right] +
+ x_{3}\left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right] =
+   \left[\begin{matrix}-8 \\ 6 \\ 0 \\ -4 \end{matrix}\right]$\\
+\\
+(b) Determine if the statement you wrote is true or false.\\
+To determine whether or not the system is consistent, convert them into a matrix and compute its RREF as follows: 
+
+\begin{verbatim}
+(Matrix(QQ,[
+[0,4,0,-8],
+[-1,-2,1,6],
+[-1,1,1,0],
+[1,1,-1,-4]
+])).rref()
+[ 1  0 -1 -2]
+[ 0  1  0 -2]
+[ 0  0  0  0]
+[ 0  0  0  0]
+\end{verbatim}\\
+We have a consistent system, therefore the statement is True -- $\left[\begin{matrix}-8 \\ 6 \\ 0 \\ -4\end{matrix}\right]$  is a linear combination of vectors in $\left\{
+\left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1\end{matrix}\right], 
+\left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right], 
+\left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right]
+\right\}$\\
+\\
+(c) If your statement was true, state the linear combination \\
+You can get $\left[\begin{matrix}-8 \\ 6 \\ 0 \\ -4\end{matrix}\right]$ from $\left\{
+\left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1\end{matrix}\right], 
+\left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right], 
+\left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right]
+\right\}$ as follows:\\
+\\
+$-2\left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1\end{matrix}\right]+$
+$-2\left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right]$ =
+$\left[\begin{matrix} 0 \\ 2 \\ 2 \\ -2\end{matrix}\right]+$
+$\left[\begin{matrix} -8 \\ 4 \\ -2 \\ -2 \end{matrix}\right] =$
+ $\left[\begin{matrix}-8 \\ 6 \\ 0 \\ -4\end{matrix}\right]$\\
+\newpage
+\noindent \textbf{Part 2}\\
+\\
+$\left[\begin{matrix} -9 \\ 7 \\ 1 \\ -3 \end{matrix}\right]$ 
+ is a linear combination of vectors in $\left\{
+ \left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1 \end{matrix}\right], 
+ \left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right], 
+ \left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right]\right\}$ 
+\\
+\\
+(a) Write a statement involving the solutions of a vector equation that's equivalent to this claim.\\
+\\
+There are some scalars, $x_{1}$, $x_{2}$, $x_{3}$ such that this system of vector equations is consistent.\\
+\\
+$x_{1}\left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1 \end{matrix}\right] +  
+ x_{2}\left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right] +
+ x_{3}\left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right] =
+   \left[\begin{matrix}-9 \\ 7 \\ 1 \\ -3 \end{matrix}\right]$\\
+\\
+(b) Determine if the statement you wrote is true or false.\\
+To determine whether or not the system is consistent, convert them into a matrix and compute its RREF as follows: 
+\begin{verbatim}
+(Matrix(QQ,[
+[0,4,0,-9],
+[-1,-2,1,7],
+[-1,1,1,1],
+[1,1,-1,-3]
+])).rref()
+[ 1  0 -1  0]
+[ 0  1  0  0]
+[ 0  0  0  1]
+[ 0  0  0  0]
+
+\end{verbatim}\\
+There is a contradiction in row 3, therefore the statement that $\left[\begin{matrix}-8 \\ 6 \\ 0 \\ -4\end{matrix}\right]$  is a linear combination of vectors in $\left\{
+\left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1\end{matrix}\right], 
+\left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right], 
+\left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right]
+\right\}$\\ is False.  $\left[\begin{matrix}-8 \\ 6 \\ 0 \\ -4\end{matrix}\right]$  is \textbf{not} a linear combination of vectors in $\left\{
+\left[\begin{matrix} 0 \\ -1 \\ -1 \\ 1\end{matrix}\right], 
+\left[\begin{matrix} 4 \\ -2 \\ 1 \\ 1 \end{matrix}\right], 
+\left[\begin{matrix} 0 \\ 1 \\ 1 \\ -1 \end{matrix}\right]
+\right\}$\\
+\\
+(c) If your statement was true, state the linear combination \\
+\\
+Not applicable.
+\newpage
+\section{VS3}\\
+
+\subsection*{Checkit 3}
+\\
+"The set of vectors
+$\left\{ \left[\begin{array}{c} 0 \\ 1 \\ -1 \\ -1 \end{array}\right] , \left[\begin{array}{c} -1 \\ 1 \\ -1 \\ 0 \end{array}\right] , \left[\begin{array}{c} -4 \\ 2 \\ -1 \\ 2 \end{array}\right] , \left[\begin{array}{c} 0 \\ 3 \\ -4 \\ -2 \end{array}\right] \right\}$ spans $\mathbb{R}^{4}$"\\
+\\
+\\
+If the set of vectors span $\mathbb{R}^{4}$, then the equation 
+$x_{1}\left[\begin{matrix} 0 \\ 1 \\ -1 \\ -2 \end{matrix}\right]+$ 
+$x_{2}\left[\begin{matrix} -1 \\ 1 \\ -1 \\ 0 \end{matrix}\right]+$ 
+$x_{3}\left[\begin{matrix} -4 \\ 2 \\ -1 \\ 2 \end{matrix}\right]+$ 
+$x_{4}\left[\begin{matrix} 0 \\ 3 \\ -4 \\ -2 \end{matrix}\right]=
+\vec{v}$ must be consistent for every $\vec{v}$ in $\mathbb{R}^{4}$ \\
+\\
+To determine if that is true, convert the system of vector equations into a matrix and compute the RREF as follows:
+\begin{verbatim}
+(Matrix(QQ,[
+[0,-1,-4,0],
+[1,1,2,3],
+[-1,-1,-1,-4],
+[-1,0,2,0-2]
+])).rref()
+[1 0 0 0]
+[0 1 0 0]
+[0 0 1 0]
+[0 0 0 1]
+\end{verbatim}
+The set of vectors
+$\left\{ \left[\begin{array}{c} 0 \\ 1 \\ -1 \\ -1 \end{array}\right] , \left[\begin{array}{c} -1 \\ 1 \\ -1 \\ 0 \end{array}\right] , \left[\begin{array}{c} -4 \\ 2 \\ -1 \\ 2 \end{array}\right] , \left[\begin{array}{c} 0 \\ 3 \\ -4 \\ -2 \end{array}\right] \right\}$ spans $\mathbb{R}^{4}$ because there are pivots in every row of the RREF.\\
+\\
+\newpage
+\section{VS4}\\
+\subsection*{Checkit 1}\\
+\\
+ Consider the following two sets of Euclidean vectors:\\
+ \\
+$U = \left\{ \left[ 
+\begin{matrix} x \\ y \end{matrix} 
+\right] \Bigg|  7x+5y=0  \right\}$, $W = \left\{ \left[ 
+\begin{matrix} x \\ y \end{matrix} 
+\right] \Bigg|  x^{3}+7y=0  \right\}$\\
+\\
+Explain why one of these sets is a subspace of $\mathbb{R}^2$ and one is not.\\
+\\
+In order to be a subspace, a set of vectors must contain the zero vector and must be closed to vector addition and scalar multiplication.\\
+\\
+\\
+\\
+Let 
+$\vec{v} = \left[\begin{matrix}x_{1}\\y_{1}\\z_{1}\\w_{1}\end{matrix}\right] \in U$ and 
+$\vec{w} = \left[\begin{matrix}x_{2}\\y_{2}\\z_{2}\\w_{2}\end{matrix}\right] \in U$. If $U$ is closed to addition, $\vec{v} + \vec{w} \in U$.\\
+\\
+Since $\vec{v}$ and $\vec{w} \in U$, then $7x_{1} + 5y_{1} = 0$ and $7x_{2} + 5y_{2} = 0$.\\
+\\
+\textbf{Is U closed to addition?}
+\\
+To determine whether or not U is closed to addition, we will select two theoretical vectors in the subspace and figure out if they are still in the subspace when we add them together. If they are, then the subset is closed to addition.
+To prove their sum is still in U, We need to prove that this equation is consistent: $(7x_{1} + 7x_{2}) + (5y_{1} + 5y_{2}) = 0$\\
+\\
+First, start with what the equation would be if we added these two vectors together and the system was closed to addition\\
+$(7x_{1} + 5y_{1}) + (7x_{2} + 5y_{2}) = 0$\\
+\\
+We can redistribute some terms on the left side since addition is associative:\\
+$7x_{1} + 7x_{2}  +  5y_{1} + 5y_{2} = 0$\\
+\\
+Then we can re-group:\\
+$(7x_{1} + 7x_{2}) + (5y_{1} + 5y_{2}) = 0$\\
+\\
+Since the sum of two vectors in U are still in U,  then U is closed to addition.\\
+\\
+\newpage
+\\
+\noindent $U = \left\{ \left[ 
+\begin{matrix} x \\ y \end{matrix} 
+\right] \Bigg|  7x+5y=0  \right\}$\\
+\\
+\noindent \textbf{Is U closed to multiplication?}
+
+To determine whether or not U is closed under multiplication, we will select a theoretical vector in U and multiply it by some real number C. If the product of that multiplication is still in U, then U is closed under multiplication. \\
+\\
+Let 
+$\vec{v} = \left[\begin{matrix}x_{1}\\y_{1}\\z_{1}\\w_{1}\end{matrix}\right] \in U$ and 
+$c \in \mathbb{R}$. If $c\vec{v} = \left[\begin{matrix}cx_{1}\\cy_{1}\\cz_{1}\\cw_{1}\end{matrix}\right] \in U$, $U$ is closed to multiplication. In other words, we need to prove that the equation $7cx_{1} + 5cy_{1} = 0$ is consistent.\\
+\\
+Starting equation:\\
+$7cx_{1} + 5cy_{1} = 0$\\
+\\
+Factor out the c\\
+$c(7x_{1} + 5y_{1}) = 0$\\
+\\
+Since this vector came from U, we know that $7x_{1} + 5y_{1} = 0$, so we can plug 0 into this equation:\\
+$c(7x_{1} + 5y_{1}) = c(0) = 0$\\
+\\
+We just proved that  $7cx_{1} + 5cy_{1} = 0$, therefore U is closed under scalar multiplication.\\
+\\
+ Remark 2.4.7. states that: Since 0 is a scalar and for any vector $\vec{v}$, a nonempty set that is closed under scalar multiplication must contain the zero vector. Since $U$ is closed under addition and scalar multiplication and is nonempty, then it contains the zero vector and is a subspace.\\
+
+\\
+\newpage
+\noindent $W = \left\{ \left[ 
+\begin{matrix} x \\ y \end{matrix} 
+\right] \Bigg|  x^{3}+7y=0  \right\}$\\
+\\
+\textbf{Is W closed to addition?}
+\\
+To determine whether or not $W$ is closed to addition, we will select two theoretical vectors in $W$ and figure out if they are still in $W$ when we add them together. If they are, then $W$ is closed to addition.\\
+\\
+Let 
+$\vec{v} = \left[\begin{matrix}x_{1}\\y_{1}\end{matrix}\right] \in W$ and 
+$\vec{w} = \left[\begin{matrix}x_{2}\\y_{2}\end{matrix}\right] \in W$. If $W$ is closed to addition, $\vec{v} + \vec{w} \in W$.\\
+\\
+Since $\vec{v}$ and $\vec{w} \in W$, then $x_{1}^{3} + 7y_{1} = 0$ and $x_{2}^{3} + 7y_{2} = 0$.\\
+\\
+To prove their sum is still in $W$, we need to prove that this equation is consistent: $(x_{1} + x_{2})^{3} + 7(y_{1} + y_{2}) = 0$\\
+\\
+We can re-group some terms:\\
+$(x_{1} + x_{2})^{3} = -7(y_{1} + y_{2})$\\
+\\
+We can distribute the -7 on the right side:\\
+$(x_{1} + x_{2})^{3} = -7y_{1} - 7y_{2}$\\
+\\
+But we cannot distribute the $x^{3}$ term since exponents do not distribute over addition.\\
+\\
+This means that there are some vectors in $W$ that would sum together to some vector that is outside of $W$, therefore $W$ is not a subspace. \\
+\\
+\\
+\newpage
+\section{VS5}\\
+\subsection*{Checkit 1}\\
+
+\newpage
+\section{VS6}\\
+\subsection*{Checkit 1}\\
+
+Task 1.
+
+Write a statement involving the solutions of a vector equation that's equivalent to each claim:\\
+\\
+Task 1.1\\
+"The set of vectors ${\left\{ 
+\left[\begin{matrix} 1 \\ 3 \\ 4 \\ -4 \end{matrix}\right] , \left[\begin{matrix} 0 \\ 1 \\ 3 \\ -3 \end{matrix}\right] , \left[\begin{matrix} 3 \\ 11 \\ 18 \\ -18 \end{matrix}\right] , \left[\begin{matrix}-2 \\ -7 \\ -11 \\ 11 \end{matrix}\right] \right\}$ is a basis for $\mathbb{R}^{4}$."\\
+\\
+Task 1.2\\
+"The set of vectors ${\left\{ 
+\left[\begin{matrix} 1 \\ 3 \\ 4 \\ -4 \end{matrix}\right] , \left[\begin{matrix} 0 \\ 1 \\ 3 \\ -3 \end{matrix}\right] , \left[\begin{matrix} 3 \\ 11 \\ 18 \\ -18 \end{matrix}\right] , \left[\begin{matrix}-2 \\ -7 \\ -11 \\ 11 \end{matrix}\right] \right\}$ is not a basis for $\mathbb{R}^{4}$."\\
+\\
+
+Task 1.1:
+For every $\vec{v} \in \mathbb{R}^{4}$, where $\vec{v} = \left[\begin{matrix}x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \end{matrix} \right]$ there exists some scalars $a,b,c,d \in \mathbb{R}$ such that the system of equations\\
+
+$$
+a \left[\begin{matrix} 1 \\ 3 \\ 4 \\ -4 \end{matrix}\right] +
+b \left[\begin{matrix} 0 \\ 1 \\ 3 \\ -3 \end{matrix}\right] +
+c \left[\begin{matrix} 3 \\ 11 \\ 18 \\ -18 \end{matrix}\right] +
+d \left[\begin{matrix}-2 \\ -7 \\ -11 \\ 11 \end{matrix}\right] = \left[\begin{matrix}x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \end{matrix} \right]$$ 
+is consistent and has a unique solution for every $\vec{v} \in \mathbb{R}^{4}$\\
+
+Task 1.2:
+There is some $\vec{v} \in \mathbb{R}^{4}$, where $\vec{v} = \left[\begin{matrix}x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \end{matrix} \right]$ and some scalars $a,b,c,d \in \mathbb{R}$ such that the system of equations\\
+
+$$
+a \left[\begin{matrix} 1 \\ 3 \\ 4 \\ -4 \end{matrix}\right] +
+b \left[\begin{matrix} 0 \\ 1 \\ 3 \\ -3 \end{matrix}\right] +
+c \left[\begin{matrix} 3 \\ 11 \\ 18 \\ -18 \end{matrix}\right] +
+d \left[\begin{matrix}-2 \\ -7 \\ -11 \\ 11 \end{matrix}\right] = \left[\begin{matrix}x_{1} \\ x_{2} \\ x_{3} \\ x_{4} \end{matrix} \right]$$ 
+has infinite solutions\\
+\newpage
+Task 2.
+Explain how to determine which of these statements is true.\\
+To figure out if a series of vectors form a basis, convert them into a matrix and compute the RREF. If there is a pivot in every row and column, it is a basis because it spans the space and is linearly independent -- that is to say, you have just enough information to span the space and no additional, unnecessary information.\\
+
+
+\newpage
+\section{VS7}\\
+\subsection*{Checkit 1}\\
+
+\newpage
+\section{VS8}\\
+\subsection*{Checkit 1}\\
+
+Want to write something like:
+to show that 7(x+x) - 5(y+y) = 0 (make it clear we dont know yet), then distribute and foil and whatever, so say:
+we want to show that that 7(x+x) - 5(y+y) = 0, we can't start by saying"
+7(x+x) - 5(y+y) = 0 because that implies that its true, we need to show it first...
+If addition and multiplication are in it, then the zero vector is in it already... if you can rule out the zero vector, you only need to prove one is untrue, regardleess of what c is we'd always get 0.
+If the condition 
+
+
+\end{document}
