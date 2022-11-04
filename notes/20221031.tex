@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\section*{Oct 31 notes}\\
+\\
+Activity 3.3.4\\
+Let T:$\mathbb{R}^{3} \rightarrow  \mathbb{R}^{2}$ be the linear transformation given by the standard matrix.\\
+$T = 
+\left(\left[\begin{matrix} 
+x\\y\\z 
+\end{matrix}\right]\right)$ = 
+$\left[\begin{matrix} 
+3x + 4y -z \\ x + 2y + z \end{matrix}\right]$
+\\
+a. set the three equations to 0\\
+$3x+4y-z = 0$\\
+$x+2y+z = 0$\\
+\\
+Computing the RREF\\
+\begin{verbatim}
+(Matrix(QQ,[
+[3,4,-1,0],
+[1,2,1,0]
+])).rref()
+[ 1  0 -3  0]
+[ 0  1  2  0]
+\end{verbatim}\\
+\\
+This means: \\
+1x = 3z\\
+y = -1z \\
+z = z\\
+\\
+Activity 3.3.5\\
+Let T:$\mathbb{R}^{3} \rightarrow  \mathbb{R}^{2}$ be the linear transformation given by the standard matrix.\\
+$T = 
+\left(\left[\begin{matrix} 
+x\\y\\z\\w 
+\end{matrix}\right]\right)$ = 
+$\left[\begin{matrix} 
+2x + 4y + 2z - 4w \\ 
+-2x - 4y + z + w \\
+3x + 6y -z - 4w \\
+\end{matrix}\right]$
+Again, compute RREF\\
+\\
+\begin{verbatim}
+(Matrix(QQ,[
+[2,4,2,-4],
+[-2,-4,1,1],
+[3,6,-1,-4]
+])).rref()
+[ 1  0 -3  0]
+[ 0  1  2  0]
+\end{verbatim}\\
+-2,1,0,0
+1 vector in our basis, kernel is 1 dimensional\\
+\\
+Activity 3.3.6 Which of these subspaces of R3 describes the set of all vectors that are the result of using t to transform R2 vectors?\\
+Our answer is B bc we couldn't get anything in the z row because we can't get anything other than 0 in z row as a linear combination of T(xy) since it's always 0\\
+\\
+Let T:V$\rightarrow$W be a linear transformation, the image of R is an important subspace of W defined by\\
+\\
+Activity 3.3.8 \\
+B is kernel, our answer is C bc we have x and y (not just a,a). 
+\\
+Activity 3.3.9\\
+(Matrix(QQ,[
+[3,4,7,1],
+[-1,1,0,2],
+[2,1,3,-1]
+])).rref()
+[ 1  0  1 -1]
+[ 0  1  1  1]
+[ 0  0  0  0]\\
+A - not linearly independent
+Im(t) is image of (T).
+bc the standard matrix is the identity matrix, you can get any linear combination in R4\\
+\\
+Any vector can be rewritten as a linear combination \\
+\\
+The image of T is the span of the columns of A. Remove the vectors
+creating non-pivot columns in RREF A to get a basis for the image.\\
+we dont know if its a basis yet, but we do know it spans\\
+\\
+bc they are linear combinations of vectors of T it is linearly dependent.\\
+\\
+Observation 3.3.10 explains this a little more\\
+Fact 3.3.11 the kernel is the solution set for the homogeneous system given the augmented matrix, use the coefficients of its free variables to get a basis for the kernel.\\
+\\
+THe image T is the span of the columns of A, remove the vectors creating non-pivots to get a basis for the image.\\
+\\
+3.3.13 pivot columns tells us about the image, non-pivot columns is the basis of kernel
+
+\end{document}

@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\section*{Nov 2 notes}\\
+\\
+Activity 3.3.13\\
+Let there be a linear transformation with the standard matrix A, which of the following is equal to the dimension of the kernel T?\\
+\\
+The pivot columns tell us about the dimension of the image, the non-pivot columns tell us about the basis of the kernel. See Fact 3.3.11 for explanation re: why that is true. \\
+\\
+3.3.13 pivot columns tells us about the image, non-pivot columns is the basis of kernel, so the answer is B, the number of non-pivot columns.\\
+D tells us about how much of the codomain we have spanned.\\
+\\
+See Observation 3.3.15 -- The rank nullity theoryem
+the dim of domain t is the dim kernel dim=
+
+1 column for every dim of input, so dimension of domain
+every column is eeither a kernel or an image\\
+\\
+the dim of the image or the rank of a transformation and the rank of the kernel is the nullity\\
+\\
+Definition 3.4.1 - T is injective if its a linear transformation that doesnt make two vectors to the same vector -- 
+\\
+3.4.2 injective or not? - D\\
+if we take in two different vectors, we still have the same output\\
+3.4.3 injective or not? - B\\ 
+why did we change from a to b -- for it to be injective it can't be equal -- b is more correct if we go back to the definition. The statement A is always true for linear transformations. \\
+\\
+For example:\\
+\\
+no matter what, if i start w two unique xy i'll get back two unique\\
+\\
+if something is injective does it need to have only pivot columns?\\
+\\
+Rebecca suggests we can't have an injective transformation if we go down a vector\\
+\\
+Injective and surjective arent musually exclusive, thigns can be either or both.
+Surjectivity - T is surjective if every element of W is mapped to an element V.\\
+Def 3.4.5 (b) not surjective example the set of vectors we get back only spand a 2d plane in R3, so we arent sujective\\
+Not surjective bc we cant produce every vector in R3 -- bc we arent able to get a z value -- basically we span some plane in R3 but dont span the whole space.
+\\
+3.4.6 (a) \\
+\\
+what comes out is dependent on x and y, which is a -- the opposite is basically saying that no matter what you get out its dependent on z and has nothing to do w xy because weve set them to 0. If we plug in 00z in the original transformation, i'd always get back the zero vector.\\
+\\
+Observation 3.4.7 --- Injective map RREF has pivot in every column, surjective has a pivot in each row
+\\
+infinite solutions vs linear dependence\\
+\\
+If map goes from R3 to R3, and 
+$\begin{bmatrix} 1&0&0 \\ 0&1&0 \\ 0&0&0 \end{bmatrix}$
+is neither injective or surjective\\
+\\
+3.4.8 What can we conclude about the transformation if the kernel contains more than 1 vector?\\
+Our answer is B\\
+\\
+not injective bc multiple things map to the same thing\\
+it could be surjective but we dont know -- if we map r3 to r2 we might have multiple vectors that give us the zero vector, but you could still potentially span the whole space.\\
+if we have more than 1 thing in our kernel, we have more than 1 free variable (check to make sure its true)\\
+\\
+Fact 3.4.9 - a linear transformation is injective when its trivial kernel -- e.g. T(0) is the only way to get 0 vector.\\
+\\
+Activity 3.4.10\\
+\\
+D, T is not surjective\\
+\\
+If the image is spanned by 4 vectors, it can't span R5 
+\\
+Fact 3.4.11 -- surjective - identical codomain and image\\
+\\
+next time activity 3.4.12 
+
+
+\\
+
+\\
+
+\\
+\\
+
+\\
+\\
+
+
+
+\end{document}

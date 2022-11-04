@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\section*{Oct 28 notes}\\
+\\
+Definition 3.2.7 - seems pretty critical for this whole section -- basically transpose the T: bits so they are applied to all columns, if they are the standard basis vectors you can use them for row operations.\\
+\\
+Activity 3.2.9\\
+\\
+Let the linear transformation be given by:\\
+Turn the x,y,z into standard basis vectors\\
+\\
+x = [1,0,0], y = [0,1,0], z = [0,0,1]\\
+Then we convert the system of equations to a matrix:\\
+\\
+$\left[ \begin{matrix} 1 & 0 & 3\\ 2 & -1 & -4  \end{matrix} \right] $
+ \\
+
+
+Fact 3.2.10: Because every linear map $T \colon \mathbb{R}^{m} \rightarrow \mathbb{R}^{n}$ has a linear combination of the variables in each component, and thus $T(\vec{e}_{i})$
+yields exactly the coefficients of $x_{i}$, the standard matrix for $T$ is simply an ordered list of the coefficients of the $x_{i}$\\
+\\
+Fact 3.2.10: BC every linear map has a linear combination of the variables in each component, transformation of the standard basis vectors yields the coefficients of $x_{i}$  the standard basis matrix for T is an ordered list of coefficients in $x_{i}$\\
+\\
+Activity 3.2.11
+$\left[ \begin{matrix} 3 & -2 & -1 \\ 5 & 5 & 2 \\ 0 & -2 & 1 \end{matrix} \right]$
+(a) compute T [1,2,3]:\\
+(b) compute T [x,y,z]:\\
+\\
+b first:\\
+$\left[ \begin{matrix} 3x & -2y & -1z \\ 5x & 5y & 2z \\ 0x & -2y & 1z \end{matrix} \right]$\\
+\\
+then a:\\
+$\left[ \begin{matrix} 3 & 4 & -3 \\ 5 & 10 & 6 \\ 0 & -4 & 3 \end{matrix} \right]$\\
+\\
+Then add them all together to get a vector:\\
+$\left[ \begin{matrix} 4\\ 21 \\ -1 \end{matrix} \right]$\\
+\\
+\newpage
+3.2.12\\
+\\
+$T_{1} \left( \left[ \begin{matrix} 
+1\\2 
+\end{matrix} \right] \right)$ 
+$\left[\begin{matrix}
+4 & 3 \\0 & -1 \\1 & 1\\3 & 0
+\end{matrix}\right]$\\
+\\
+$\left[\begin{matrix}
+4 & 6 \\0 & -2 \\1 & 2\\3 & 0
+\end{matrix}\right]$ = 
+$\left[\begin{matrix}
+10 \\ -2 \\3\\3 \end{matrix}\right]$\\
+\\
+$T_{2} \left( \left[ \begin{matrix} 
+1\\1\\0\\-3 
+\end{matrix} \right] \right)$ 
+$\left[\begin{matrix}
+4 & 3 & 0 & -1 \\1 & 1 & 3 & 0
+\end{matrix}\right]$\\
+\\
+$\left[\begin{matrix}
+4 & 3 & 0 & 3 \\1 & 2 & 0 & 0 
+\end{matrix}\right]$ = 
+$\left[\begin{matrix}
+10 \\3
+\end{matrix}\right]$
+\\
+3.3.1 - answer is [0,0].\\
+\\
+the kernel of T is a subspace of V that yields the additive identity (zero).\\
+\\
+3.3.3 which of these subspaces describe kernel T - the set of all vectors that tranform into 0 vector.\\
+Answer is A (bc c is part of a).\\
+\\
+
+
+
+\end{document}
