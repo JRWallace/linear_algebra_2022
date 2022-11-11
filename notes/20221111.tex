@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\begin{document}
+\section*{Nov 11 notes}\\
+\\
+See definition 4.1.5 we define the product AB of a mxn matrix A and a nxk matrix .. etc.
+\\
+\textbf{Activity 4.1.9}\\
+Of the following matrices, only two may be multiplied. \\
+$A = \begin{bmatrix} -1 & 3 & -2 & -3 \\ 1 & -4 & 2 & 3 \end{bmatrix}$, $B = \begin{bmatrix} 1 & -6 & -1  \\ 0 & 1 & 0  \end{bmatrix}$,  $C = \begin{bmatrix} 1 & -1 & -1  \\ 0 & 1 & -2 \\ -2 & 4 & -1 \\ -2 & 3 & -1  \end{bmatrix}$\\
+Only A and C are multipliable, because for two matrices M and N to be multipliable, the row length of M must equal the column length of N (or vice versa).\\
+\\
+\textbf{Activity 4.2.1}\\
+Let 
+$A = \begin{bmatrix} 2 & 7 & -1  \\ 0 & 3 & 2 \\ 1 & 1 & -1 \end{bmatrix}$. Find a 3x3 matrix B such that BA = A. That is:\\
+$\begin{bmatrix} ? & ? & ? \\ ? & ? & ?\\ ? & ? & ? \end{bmatrix}  \begin{bmatrix} 2 & 7 & -1  \\ 0 & 3 & 2 \\ 1 & 1 & -1 \end{bmatrix} = \begin{bmatrix} 2 & 7 & -1  \\ 0 & 3 & 2 \\ 1 & 1 & -1 \end{bmatrix}$\\
+\begin{verbatim}
+B = Matrix(QQ,[[1, 0, 0],[0, 1, 0],[0,0,1]])
+A = Matrix(QQ,[[2, 7, -1],[0, 3, 2],[1,1,-1]])
+B*A
+[ 2  7 -1]
+[ 0  3  2]
+[ 1  1 -1]
+\end{verbatim}
+bc the identity matrix computes the identity map where the transformation just return the original matrix, always a square matrix.\\
+
+\textbf{Definition 4.2.2}\\The identity matrix $I_n$ (or just $I$ when $n$ is obvious from context) is the $n x n$ matrix that has a 1 on each diagonal element and a 0 in every other position.\\
+\\
+\textbf{Activity 4.2.3}\\
+For any square matrix $A$, $IA = AI = A$
+\begin{equation*}
+\left[\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array}\right]
+\left[\begin{array}{ccc} 2 & 7 & -1 \\ 0 & 3 & 2 \\ 1 & 1 & -1 \end{array}\right]
+=
+\left[\begin{array}{ccc} 2 & 7 & -1 \\ 0 & 3 & 2 \\ 1 & 1 & -1 \end{array}\right]
+\left[\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{array}\right]
+=
+\left[\begin{array}{ccc} 2 & 7 & -1 \\ 0 & 3 & 2 \\ 1 & 1 & -1 \end{array}\right]
+\end{equation*}
+\\
+\textbf{Activity 4.2.4}\\
+Tweaking the identity matrix slightly allows us to write row operations in terms of matrix multiplication.\\
+(a) Create a matrix that doubles the third row of A
+\begin{verbatim}
+B = Matrix(QQ,[[1, 0, 0],[0, 1, 0],[0,0,2]])
+A = Matrix(QQ,[[2, 7, -1],[0, 3, 2],[1,1,-1]])
+B*A
+[ 2  7 -1]
+[ 0  3  2]
+[ 2  2 -2]
+\end{verbatim}
+(b) Create a matrix that swaps the second and third rows of A
+\begin{verbatim}
+B = Matrix(QQ,[[1, 0, 0],[0, 0, 1],[0,1,0]])
+A = Matrix(QQ,[[2, 7, -1],[0, 3, 2],[1,1,-1]])
+B*A
+[ 2  7 -1]
+[ 1  1 -1]
+[ 0  3  2]
+\end{verbatim}
+(c) Create a matrix that adds 5 times the third row to the first row:
+\begin{verbatim}
+B = Matrix(QQ,[[1, 0, 5],[0, 1, 0],[0,0,1]])
+A = Matrix(QQ,[[2, 7, -1],[0, 3, 2],[1,1,-1]])
+B*A
+[ 7 12 -6]
+[ 0  3  2]
+[ 1  1 -1]
+\end{verbatim}
+I think about these operations as changes to the identity matrix. If we want to change row 1, I change column 1, etc. because of the way we are defining matrix multiplication. Modifying the identity matrix is sufficient because we have all potential linear combinations and span (pivots in all rows and columns).\\
+\\
+\textbf{Fact 4.2.5}\\
+If $R$ is the result of applying a row operation to $I$, then $RA$ is the result of applying the same row operation to A. Such matrices can be chained together to emulate multiple row operations. In particular: RREF(A)=$R_k \dots  R_2R_1A$ for some sequence of matrices.\\
+scaling a row R=$
+\left[\begin{array}{ccc}
+c & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right]$\\
+swapping rows: $R=
+\left[\begin{array}{ccc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{array}\right]$\\
+Adding a row multiple to another row R=
+$\left[\begin{array}{ccc}
+1 & 0 & c \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}\right]$
+\\
+\noindent\textbf{Activity 4.2.6}\\
+Consider the two row operations  $ R_2 \leftrightarrow R_3$  and $R_1 + R_2 
+\to R_1$ applied as follows to show $A \sim B$
+\begin{align*}
+A
+=
+\left[\begin{array}{ccc}
+-1&4&5\\
+0&3&-1\\
+1&2&3\\
+\end{array}\right]
+&\sim
+\left[\begin{array}{ccc}
+-1&4&5\\
+1&2&3\\
+0&3&-1\\
+\end{array}\right]\\
+&\sim
+\left[\begin{array}{ccc}
+-1+1&4+2&5+3\\
+1&2&3\\
+0&3&-1\\
+\end{array}\right]
+=
+\left[\begin{array}{ccc}
+0&6&8\\
+1&2&3\\
+0&3&-1\\
+\end{array}\right]
+= 
+B
+\end{align*}
+Express these row operations as matrix multiplication by expressing $B$ as the product of two matrices and $A$
+
+$B = \begin{bmatrix} ? & ? & ? \\ ? & ? & ?\\ ? & ? & ? \end{bmatrix}
+\begin{bmatrix} ? & ? & ? \\ ? & ? & ?\\ ? & ? & ? \end{bmatrix}  A$
+
+\begin{verbatim}
+A = Matrix(QQ,[[-1, 4, 5],[0, 3, -1],[1,2,3]])
+C = Matrix(QQ,[[1, 0, 0],[0, 0, 1],[0,1,0]])
+D = Matrix(QQ,[[1, 1, 0],[0, 1, 0],[0,0,1]])
+D*C*A
+[ 0  6  8]
+[ 1  2  3]
+[ 0  3 -1]
+\end{verbatim}
+A is our starting matrix, D adds the rows, C swaps them
+Note that A*C*D doesn't work the same way:
+\begin{verbatim}
+A = Matrix(QQ,[[-1, 4, 5],[0, 3, -1],[1,2,3]])
+C = Matrix(QQ,[[1, 0, 0],[0, 0, 1],[0,1,0]])
+D = Matrix(QQ,[[1, 1, 0],[0, 1, 0],[0,0,1]])
+A*C*D
+[-1  4  4]
+[ 0 -1  3]
+[ 1  4  2]
+\end{verbatim}
+
+Someone asks for justification re: why the order of operations matter. First operation where we swap rows is a linear transformation T. The second operation T2 is the same as adding row2 to row 1. 
+
+\end{document}
