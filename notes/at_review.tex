@@ -1,0 +1,455 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\renewcommand{\thesection}{}
+\begin{document}\\
+\tableofcontents
+\newpage
+\section{AT1: Linear Transformations}\\
+\\
+\textbf{Definition 3.1.1} \\
+A linear transformation (also called a linear map) is a
+map between vector spaces that preserves the vector space operations. More
+precisely, if V and W are vector spaces, a map T : V → W is called a linear
+transformation if\\
+\\
+1. $T(\vec{v}+\vec{w}) = T(\vec{v})+T(\vec{w})$ for any $\vec{v},\vec{w} \in V$, and\\
+2. $T(c\vec{v}) = cT(\vec{v}) = cT(\vec{v}) \text{ for any } c \in \mathbb{R}\text{  and } \vec{v} \in V$.\\
+\\
+In other words, a map is linear when vector space operations can be applied
+before or after the transformation without affecting the result. \\
+\\
+\textbf{Definition 3.1.2}\\ Given a linear transformation $T:V\to W$, $V$ is called the domain of $T$ and $W$ is called the co-domain of $T$\\
+\\
+\textbf{Example 3.1.3}\\
+Let $T : \mathbb{R}^{3} \rightarrow \mathbb{R}^{2}$ be given by \begin{equation*}
+T\left(\left[\begin{array}{c} x \\ y \\ z \end{array}\right] \right)
+=
+\left[\begin{array}{c} x-z \\ 3y \end{array}\right].
+\end{equation*}\\
+To show that is a linear transformation, we must verify that: $T(\vec{v}+\vec{w}) = T(\vec{v})+T(\vec{w})$ by computing:\\
+\begin{equation*}
+T\left(
+\left[\begin{array}{c} x \\ y \\ z \end{array}\right] +
+\left[\begin{array}{c} u \\ v \\ w \end{array}\right]
+\right)
+=
+T\left(
+\left[\begin{array}{c} x+u \\ y+v \\ z+w \end{array}\right]
+\right) =
+\left[\begin{array}{c} (x+u)-(z+w) \\ 3(y+v) \end{array}\right]
+\end{equation*} and \\
+\begin{equation*}
+T\left(
+\left[\begin{array}{c} x \\ y \\ z \end{array}\right]
+\right) + T\left(
+\left[\begin{array}{c} u \\ v \\ w \end{array}\right]
+\right)
+=
+\left[\begin{array}{c} x-z \\ 3y \end{array}\right] +
+\left[\begin{array}{c} u-w \\ 3v \end{array}\right]=
+\left[\begin{array}{c} (x+u)-(z+w) \\ 3(y+v) \end{array}\right]
+\end{equation*}\\
+
+and we must verify that $T(c\vec{v}) = cT(\vec{v})$ by computing\\
+\begin{equation*}
+T\left(c\left[\begin{array}{c} x \\ y \\ z \end{array}\right] \right)
+=
+T\left(\left[\begin{array}{c} cx \\ cy \\ cz \end{array}\right] \right)
+=
+\left[\begin{array}{c} cx-cz \\ 3cy \end{array}\right]
+\end{equation*} and 
+\begin{equation*}
+cT\left(\left[\begin{array}{c} x \\ y \\ z \end{array}\right] \right)
+=
+c\left[\begin{array}{c} x-z \\ 3y \end{array}\right]
+=
+\left[\begin{array}{c} cx-cz \\ 3cy \end{array}\right]\text{.}
+\end{equation*} 
+Therefore $T$ is a linear transformation.\\
+\\
+\noindent \textbf{Example 3.1.4} \\
+Let $S : \mathbb{R}^{2} \rightarrow \mathbb{R}^{4}$ be given by \begin{equation*}
+S\left(\left[\begin{array}{c} x \\ y \end{array}\right] \right)
+=
+\left[\begin{array}{c} x+y \\ x^2 \\ y+3 \\ y-2^x \end{array}\right]
+\end{equation*} To show that $S$ is not linear, we only need to find one counterexample.
+\begin{equation*}
+S\left(
+\left[\begin{array}{c} 0 \\ 1 \end{array}\right] +
+\left[\begin{array}{c} 2 \\ 3 \end{array}\right]
+\right)
+=
+S\left(
+\left[\begin{array}{c} 2 \\ 4 \end{array}\right]
+\right) =
+\left[\begin{array}{c} 6 \\ 4 \\ 7 \\ 0 \end{array}\right]
+\end{equation*}
+\begin{equation*}
+S\left(
+\left[\begin{array}{c} 0 \\ 1 \end{array}\right]
+\right) + S\left(
+\left[\begin{array}{c} 2 \\ 3\end{array}\right]
+\right)
+=
+\left[\begin{array}{c} 1 \\ 0 \\ 4 \\ 0 \end{array}\right] +
+\left[\begin{array}{c} 5 \\ 4 \\ 6 \\ -1 \end{array}\right]
+=
+\left[\begin{array}{c} 6 \\ 4 \\ 10 \\ -1 \end{array}\right]
+\end{equation*}
+Since the resulting vectors are different, is not a linear transformation.\\
+\\
+\textbf{Fact 3.1.5}\\
+A map between Euclidean spaces $T:\mathbb{R}^{n} \to\mathbb{R}^{m}$ is linear exactly when every component of the output is a linear combination of the variables of $\mathbb{R}^{n}$. \\
+For example, the following map is definitely linear because $x-z$ and $3y$ are linear combinations of $x,y,z$:
+\begin{equation*}
+T\left(\left[\begin{array}{c} x \\ y \\ z \end{array}\right] \right)
+=
+\left[\begin{array}{c} x-z \\ 3y \end{array}\right]
+=
+\left[\begin{array}{c} 1x+0y-1z \\ 0x+3y+0z \end{array}\right]\text{.}
+\end{equation*}
+But the map below is not linear because $x^2$, $y+3$, and $y-2^{x}$ are not linear combinations (even though $x+y$ is):
+\begin{equation*}
+S\left(\left[\begin{array}{c} x \\ y \end{array}\right] \right)
+=
+\left[\begin{array}{c} x+y \\ x^2 \\ y+3 \\ y-2^x \end{array}\right]\text{.}
+\end{equation*}
+\textbf{Fact 3.1.8}\\
+If $L:V\to W$ is a linear transformation, then $L(\vec z)=L(0\vec v)=0L(\vec v)=\vec z$ where $\vec z$ is the additive identity of the vector spaces $V, W$.\\
+Put another way, an easy way to prove that a map like $T(f(x)) = f'(x)+x^3$
+can not be linear is to check that \begin{equation*}
+T(0)=\frac{d}{dx}[0]+x^3=0+x^3=x^3\neq0\end{equation*}
+\\
+\textbf{Example B.1.14 AT1}\\
+Consider the following maps of polynomials $S: \mathcal{P} \rightarrow \mathcal{P}$ and $T:\mathcal{P}\rightarrow\mathcal{P}$ defined by:
+\begin{equation*}
+S(f(x))= 3xf(x) \text{ and }T(f(x)) = 3f'(x)f(x)
+\end{equation*}
+Explain why one of these maps is a linear transformation, and why the other
+map is not.\\
+\\
+Solution\\
+\\
+To show S is a linear transformation, we must show two things:\\
+$
+S\left(f(x)+g(x)\right)=S(f(x))+S(g(x)) 
+$ and $S(cf(x)) = cS(f(x))$\\
+\\
+To show S respects addition, we compute
+\begin{align*}
+S\left(  f(x)+g(x)  \right) &= 3x\left(  f(x)+g(x)  \right) & \text{by definition of S} \\ 
+                            &= 3xf(x)+3xg(x)                & \text{by distributing}
+\end{align*}
+
+But note that $S(f(x))=3xf(x)$ and $S(g(x))=3xg(x)$ (we can just plug in), so we have $S(f(x)+g(x))=S(f(x))+S(g(x))$ and S respects addition.\\
+\\
+For the second part, we compute
+\begin{align*}
+S\left( cf(x) \right) &= 3x \left( cf(x) \right) & \text{by definition of S} \\\\
+                      &= 3cxf(x)                 & \text{rewriting the multiplication.}
+\end{align*}
+
+
+But note that $cS(f(x))=c(3xf(x))=3cxf(x)$ as well, so we have $S(cf(x))=cS(f(x))$. \\
+\\
+Since S respects both addition and scalar multiplication, we can conclude S is a linear transformation.\\
+
+• (Solution method 2) As for T , we may choose the polynomial $f(x)=x$
+and scalar $c=2$. 
+\begin{equation*}
+T(f(x)) = 3f'(x)f(x)
+\end{equation*}
+and\\
+For $ \mathcal{P}_4$:\\
+$f(x) = ax^4 + bx^3 + cx^2 + dx + e$\\
+$f'(x) = 4ax^3 + 3bx^2 + 2cx + d$\\
+$f''(x) = 12ax^2 + 6bx + 2c$\\
+
+Then:\\
+\begin{equation*}
+T(cf(x))=T(2x)=3(2x)'(2x)=3(2)(2x)=12x.
+\end{equation*}
+Because the formula for the derivative of 2x is given by d(2x)/dx = 2dx/dx = (2)(1/1) = 2\\
+Derivative of x is given by d(x)/dx = dx/dx = (1/1) = 1\\
+
+\\
+But on the other hand:
+\begin{equation*}
+cT(f(x))=2T(x)=2(3)(x)'(x)=2(3)(1)(x)=6x.
+\end{equation*}
+Since this isn’t the same polynomial, T does not preserve multiplication
+and is therefore not a linear transformation.
+
+\newpage
+\section{AT2: Standard Matrices}\\
+\textbf{Remark 3.2.1}\\
+Recall that a linear map $T:V\rightarrow W$ satisfies:\\
+1. $T(\vec{v}+\vec{w}) = T(\vec{v})+T(\vec{w})$ for any $\vec{v},\vec{w} \in V$\\
+2. $T(c\vec{v}) = cT(\vec{v})$ for any $c \in \mathbb{R}, \vec{v} \in V$\\
+In other words, a map is linear when vector space operations can be applied before or after the transformation without affecting the result\\
+\\
+\textbf{Activity 3.2.2, 3.2.3, 3.2.4, 3.2.5}\\
+Suppose $T: \mathbb{R}^3 \rightarrow \mathbb{R}^2$ is a linear map, and you know 
+$T\left(\left[\begin{array}{c} 1 \\ 0 \\ 0 \end{array}\right] \right) =
+\left[\begin{array}{c} 2 \\ 1 \end{array}\right]$ and
+$T\left(\left[\begin{array}{c} 0 \\ 0 \\ 1 \end{array}\right] \right) =
+\left[\begin{array}{c} -3 \\ 2 \end{array}\right]$. \\
+\\
+\\
+3.2.2: What is $T\left(\left[\begin{array}{c} 3 \\ 0 \\ 0 \end{array}\right]\right)$? $\displaystyle \left[\begin{array}{c} 6 \\ 3\end{array}\right]$ because $ (3)T\left(\left[\begin{array}{c} 1 \\ 0 \\ 0 \end{array}\right] \right) = \left[\begin{array}{c} 6 \\ 3\end{array}\right]$\\
+3.2.3: What is $T\left(\left[\begin{array}{c} 1 \\ 0 \\ 1 \end{array}\right]\right)$? You can add $\begin{bmatrix} 2\\1 \end{bmatrix}$ and $\begin{bmatrix} -3\\2 \end{bmatrix}$ to get C $\begin{bmatrix} -1\\3 \end{bmatrix}$  \\
+\\
+3.2.4: What is $T\left(\left[\begin{array}{c} -2 \\ 0 \\ -3 \end{array}\right]\right)$? Multiply and add them together:\\
+(-2) $\begin{bmatrix} 1\\0\\0  \end{bmatrix}$ = $\begin{bmatrix} -4\\-2 \end{bmatrix}$ + 
+(-3) $\begin{bmatrix} 0\\0\\1  \end{bmatrix}$ = $\begin{bmatrix} 9\\-6 \end{bmatrix}$ =
+$\begin{bmatrix} 5\\-8 \end{bmatrix}$
+\\
+3.2.5: What would help you compute $T\left(\left[\begin{array}{c} 0 \\ 4 \\ -1 \end{array}\right]\right)$? If we had $T \begin{bmatrix} 0\\1\\0 \end{bmatrix}$ we would have a basis, which would be mose helpful.. but $T \begin{bmatrix} 0\\-4\\0 \end{bmatrix}$ and $T \begin{bmatrix} 1\\1\\1 \end{bmatrix}$ would also help since we could get the middle value using linear combinations.\\
+\\
+\textbf{Fact 3.2.6}\\
+Consider any basis $\{\vec b_1,\dots,\vec b_n\}$for V . Since every vector $\vec{v}$ can be
+written as a linear combination of basis vectors,$\vec v = x_1\vec b_1+\dots+ x_n\vec b_n$, we may
+compute $T(\vec v)$ as follows:
+\begin{equation*}
+T(\vec v)=T(x_1\vec b_1+\dots+ x_n\vec b_n)=
+x_1T(\vec b_1)+\dots+x_nT(\vec b_n)
+\end{equation*}
+Therefore any linear transformation $T:V \rightarrow W$ can be defined by just describing the values of $T(\vec b_i)$\\
+\textbf{Put another way, the images of the basis vectors completely determine the transformation T}\\
+personal note from JW: This definition isn't in the book, but the 'image' is basically just what you get back after transforming your starting vectors, the 'kernel' is the set of vectors that turn into the zero vector after the transformation.\\
+\\
+\textbf{Definition 3.2.7}\\
+Since a linear transformation $T:\mathbb{R}^n\to\mathbb{R}^m$ is determined by its action on the standard basis
+$\{\vec e_1,\dots,\vec e_n\}$, it is convenient to store this information in an matrix, called the standard matrix of $T$, given by
+$[T(\vec e_1) \,\cdots\, T(\vec e_n)]$.\\
+For example, let $T:\mathbb{R}^3\to\mathbb{R}^2$  be the linear map determined by the following values for $T$ applied to the standard basis of $\mathbb{R}^3$.\\
+\begin{equation*}
+\scriptsize
+T\left(\vec e_1 \right)
+=
+T\left(\left[\begin{array}{c} 1 \\ 0 \\ 0 \end{array}\right] \right)
+=
+\left[\begin{array}{c} 3 \\ 2\end{array}\right]
+\hspace{2em}
+T\left(\vec e_2 \right)
+=
+T\left(\left[\begin{array}{c} 0 \\ 1 \\ 0 \end{array}\right] \right)
+=
+\left[\begin{array}{c} -1 \\ 4\end{array}\right]
+\hspace{2em}
+T\left(\vec e_3 \right)
+=
+T\left(\left[\begin{array}{c} 0 \\ 0 \\ 1 \end{array}\right] \right)
+=
+\left[\begin{array}{c} 5 \\ 0\end{array}\right]
+\end{equation*}
+Then the standard matrix corresponding to $T$ is\\
+\begin{equation*}
+\left[\begin{array}{ccc}T(\vec e_1) & T(\vec e_2) & T(\vec e_3)\end{array}\right]
+=
+\left[\begin{array}{ccc}3 & -1 & 5 \\ 2 & 4 & 0 \end{array}\right]
+\end{equation*}
+
+\noindent \textbf{Fact 3.2.10}:\\
+Because every linear map $T \colon \mathbb{R}^{m} \rightarrow \mathbb{R}^{n}$ has a linear combination of the variables in each component, and thus $T(\vec{e}_{i})$ yields exactly the coefficients of $x_{i}$, the standard matrix for $T$ is simply an ordered list of the coefficients of the $x_{i}$\\
+\begin{equation*}
+T\left(\left[\begin{array}{c}x\\y\\z\\w\end{array}\right]\right)
+=
+\left[\begin{array}{c}
+ax+by+cz+dw \\
+ex+fy+gz+hw
+\end{array}\right]
+\hspace{2em}
+A
+=
+\left[\begin{array}{cccc}
+a & b & c & d \\
+e & f & g & h
+\end{array}\right]
+\end{equation*}
+\newpage
+\noindent \textbf{Activity 3.2.11}:\\
+Let  $T: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ be the linear transformation given by the standard matrix:\\
+$\begin{bmatrix} 3 & -2 & -1 \\ 4 & 5 & 3 \\ 0 & -2 & 1 \end{bmatrix}$\\
+(a) compute $T\begin{bmatrix} 1 \\ 2 \\3 \end{bmatrix}$: \\
+\\
+(b) compute $T\begin{bmatrix} x \\ y \\z \end{bmatrix}$: \\
+\\
+b first:\\
+$\left[ \begin{matrix} 3x & -2y & -1z \\ 4x & 5y & 2z \\ 0x & -2y & 1z \end{matrix} \right]$\\
+\\
+then a, plugging in 1, 2, 3 for x, y z:\\
+$\left[ \begin{matrix} 3 & 4 & -3 \\ 4 & 10 & 6 \\ 0 & -4 & 3 \end{matrix} \right]$\\
+\\
+Then add them all together to get a vector:\\
+$\left[ \begin{matrix} 4\\ 20 \\ -1 \end{matrix} \right]$\\
+\\
+\\
+\noindent \textbf{Activity 3.2.12}:\\
+Compute the following linear transformations of bectors given their standard matrices:\\
+(a) $T_{1} \left( \left[ \begin{matrix} 
+1\\2 
+\end{matrix} \right] \right)$ 
+$\left[\begin{matrix}
+4 & 3 \\0 & -1 \\1 & 1\\3 & 0
+\end{matrix}\right]$, 
+$\left[\begin{matrix}
+4 & 6 \\0 & -2 \\1 & 2\\3 & 0
+\end{matrix}\right]$ = 
+$\left[\begin{matrix}
+10 \\ -2 \\3\\3 \end{matrix}\right]$\\
+\\
+(b) $T_{2} \left( \left[ \begin{matrix} 
+1\\1\\0\\-3 
+\end{matrix} \right] \right)$ 
+$\left[\begin{matrix}
+4 & 3 & 0 & -1 \\1 & 1 & 3 & 0
+\end{matrix}\right]$, 
+$\left[\begin{matrix}
+4 & 3 & 0 & 3 \\1 & 2 & 0 & 0 
+\end{matrix}\right]$ = 
+$\left[\begin{matrix}
+10 \\3
+\end{matrix}\right]$
+\newpage
+\section{AT3: Image and Kernel}\\
+\noindent \textbf{Activity 3.3.1}:\\
+Let $T: \mathbb{R}^2 \to \mathbb{R}^3$ be given by:\\
+\begin{equation*}
+T\left(\left[\begin{array}{c}x \\ y \end{array}\right] \right)
+=
+\left[\begin{array}{c} x \\ y \\ 0 \end{array}\right]
+\hspace{3em}
+\text{with standard matrix }
+\left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \\ 0 & 0 \end{array}\right]
+\end{equation*}
+\\
+\\
+Which of these subspaces describe the set of all vectors that transform into $\vec{0}$?
+Answer is [0,0] -- the kernel of T is a subspace of V that yields the additive identity (zero).\\
+
+\noindent \textbf{Definition 3.3.2}:\\
+Let  $T: V \to W$ be a linear transformation. The kernel of $T$ is an important subspace of $V$ defined by:
+\begin{equation*}
+\ker T = \left\{ \vec{v} \in V\ \big|\ T(\vec{v})=\vec{z}\right\}
+\end{equation*}
+\noindent \textbf{Activity 3.3.3}:\\
+Let $T: \mathbb{R}^2 \to \mathbb{R}^3$ be given by:\\
+\begin{equation*}
+T\left(\left[\begin{array}{c}x \\ y\\z \end{array}\right] \right)
+=
+\left[\begin{array}{c} x \\ y \end{array}\right]
+\hspace{3em}
+\text{with standard matrix }
+\left[\begin{array}{ccc} 1 & 0 & 0 \\ 0 & 1 & 0 \end{array}\right]
+\end{equation*}
+Which of these subspaces describe kernel T - the set of all vectors that transform into 0 vector?\\
+Answer is A:\\
+\\
+$\left\{ \begin{bmatrix} 0\\0\\a\end{bmatrix} \Bigg| a \in \mathbb{R} \right\}$, similar to C $\left\{ \begin{bmatrix} 0\\0\\0\end{bmatrix}  \right\}$ but C is technically part of A.\\
+\\
+\\
+\noindent \textbf{Activity 3.3.4}:\\
+Let T:$\mathbb{R}^{3} \rightarrow  \mathbb{R}^{2}$ be the linear transformation given by the standard matrix.\\
+$T = 
+\left(\left[\begin{matrix} 
+x\\y\\z 
+\end{matrix}\right]\right)$ = 
+$\left[\begin{matrix} 
+3x + 4y -z \\ x + 2y + z \end{matrix}\right]$
+\\
+a. set the three equations to 0\\
+$3x+4y-z = 0$\\
+$x+2y+z = 0$\\
+\\
+Computing the RREF:
+\begin{verbatim}
+(Matrix(QQ,[
+[3,4,-1,0],
+[1,2,1,0]
+])).rref()
+[ 1  0 -3  0]
+[ 0  1  2  0]
+\end{verbatim}\\
+\\
+This means: \\
+1x = 3z\\
+y = -1z \\
+z = z\\
+\\
+where z = a:\\
+\\
+$kerT = \left\{ \begin{bmatrix} 3a\\-1a\\a\end{bmatrix} \Bigg| a \in \mathbb{R} \right\}$\\
+\\
+\noindent \textbf{Fact 3.3.11}:\\
+\\
+Let $T: \mathbb{R}^n \to \mathbb{R}^m$ be a linear transformation with standard matrix
+A.\\
+• The kernel of T is the solution set of the homogeneous system given by
+the augmented matrix $\left[\begin{array}{c|c}A&\vec 0\end{array}\right]$. Use the coeﬀicients of its free variables
+to get a basis for the kernel.\\
+• The image of T is the span of the columns of A. Remove the vectors
+creating non-pivot columns in RREF A to get a basis for the image.\\
+\\
+The pivot columns tell us about the dimension of the image, the non-pivot columns tell us about the basis of the kernel. See Fact 3.3.11 for explanation re: why that is true. \\
+\\
+To get a basis of the kernel of a transformation, solve a homogenous system and select the vectors from the free variables, they form a basis for the kernel (see page 61 https://www.math.brown.edu/streil/papers/LADW/LADW-2014-09.pdf).
+
+\\
+\noindent \textbf{Observation 3.3.15}:\\
+\\
+Combining these with the observation that the number of columns is the dimension of the domain of $T$, we have the rank-nullity theorem:\\
+\\
+The dimension of the domain of equals $\dim(\ker T)+\dim(\text{Im} T)$.\\
+\\
+The dimension of the image is called the rank of T (or A) and the dimension of the kernel is called the nullity.
+\\
+The pivot columns tell us about the dimension of the image, the non-pivot columns tell us about the basis of the kernel. See Fact 3.3.11 for explanation re: why that is true. \\
+\newpage
+
+\section{AT4: Injective and Surjective Linear Maps}\\
+\noindent \textbf{ Definition 3.4.1}:\\
+Let $T: V \to W$  be a linear transformation. $T$ is called injective or one-to-one if $T$ does not map two distinct vectors to the same place. More precisely, $T$ is injective if $T(\vec{v}) \neq T(\vec{w})$ whenever $\vec{v} \neq \vec{w}$\\
+
+\noindent \textbf{ Definition 3.4.4}:\\
+Let $T: V \to W$  be a linear transformation. $T$ is called surjective or onto if every element of $W$ is mapped to by an element of $V$.   More precisely, for every $\vec{w} \in W$ there is some $\vec{v} \in V$ with $T(\vec{v})=\vec{w}$\\
+\\
+An injective transformation maps different inputs to different outputs, we may or may not be able to span the entire output space for a given input, has an empty kernel (only 0 maps to 0)\\
+A surjective transformation will span the entire output space.\\
+Bijective does both -- every single input has a unique, single output and we span the entire output space -- one-to-one.\\
+\\
+\noindent \textbf{ Observation 3.4.7}:\\
+RREF of the injective map standard matrix has all pivot columns.\\
+RREF of the surjective map standard matrix has all pivot rows.\\
+\\
+\noindent \textbf{Fact 3.4.9}:\\
+A linear transformation is injective if and only if $\ker T = \{\vec{0}\}$. Put another way, an injective linear transformation may be recognized by its trivial kernel.\\
+\\
+\noindent \textbf{Fact 3.4.11}:\\
+A linear transformation $T:V \rightarrow W$  is surjective if and only if $\text{Im}T = W$. Put another way, a surjective linear transformation may be recognized by its identical codomain and image.\\
+
+\noindent \textbf{Activity 3.4.12}:\\
+Let $T: \mathbb{R}^n \to \mathbb{R}^m$ be a linear map with standard matrix $A$. \\
+A. The kernel of T is trivial, i.e. $\ker T=\{\vec 0\}$.\\
+B. The columns of $A$ span $\mathbb{R}^m$.\\
+C. The columns of $A$ are linearly independent.\\
+D. Every column of RREF(A) has a pivot.\\
+E. Every row of RREF(A) has a pivot.\\
+F. The image of $T$ equals its codomain, i.e. ImT = $\mathbb{R}^m$.\\
+G. The system of linear equations given by the augmented matrix $\left[\begin{array}{c|c}A & \vec{b} \end{array}\right]$ has a solution for all $\vec{b} \in \mathbb{R}^m$\\
+H. The system of linear equations given by the augmented matrix $\left[\begin{array}{c|c}A & \vec{0} \end{array}\right]$ has exactly one solution.\\
+\\
+T is injective: A, C, D, H \\
+T is surjective: B, E, F, G \\
+\\
+Note: If the transformation T is from Rn to Rn and T is found to be injective, T is also surjective. Likewise, if the transformation T is from Rn to Rn and T is found to be surjective, T is also injective. This is because if every column in a square matrix (because an  Rn to Rn transformation will have a square matrix) has a pivot, every row has a pivot, and vice versa (from statements D and E). \\
+\\
+\noindent \textbf{Observation 3.4.13}:\\
+The easiest way to determine if the linear map with standard matrix A is injective is to see if RREF(A) has a pivot in each column.\\
+The easiest way to determine if the linear map with standard matrix A is surjective is to see if RREF(A) has a pivot in each row.\\
+\end{document}
